@@ -1,0 +1,37 @@
+statut.genetmesnillogiciels.fr
+
+RÉSOLU — Indisponibilité de la plateforme le 17/11/2026 de 09h12 à 11h52
+
+Publié le 17/11/2026 à 13h05 par l'équipe exploitation de Genêtmesnil Logiciels SAS
+
+Composants concernés : application web, API publique, synchronisation mobile
+Statut actuel : opérationnel
+
+Résumé
+Le mardi 17 novembre 2026, la plateforme a été indisponible pour l'ensemble des clients pendant 2 h 40, de 09h12 à 11h52 (heure de Paris). Aucune donnée n'a été perdue : les écritures en cours au moment de la panne ont été rejouées depuis le journal de transactions après le rétablissement.
+
+Chronologie
+- 09h12 — Le contrôleur principal de la baie de stockage du datacentre DC-A passe en erreur. Les volumes des bases de données deviennent inaccessibles en écriture.
+- 09h14 — Alerte de la supervision, ouverture de l'incident, première publication sur cette page à 09h21.
+- 09h30 — La bascule automatique vers le datacentre DC-B démarre mais ne s'achève pas : le second contrôleur, mis à jour la veille, refuse de reprendre deux volumes.
+- 10h05 — Escalade vers notre fournisseur de stockage, Datavalm Systèmes, qui identifie une incompatibilité entre les deux versions de firmware.
+- 11h20 — Retour arrière du firmware sur le second contrôleur, montage des volumes sur DC-B.
+- 11h52 — Service rétabli, contrôles d'intégrité terminés, trafic rebasculé.
+
+Cause
+Panne matérielle du contrôleur principal, aggravée par une bascule incomplète due à des versions de firmware différentes entre les deux contrôleurs. La procédure de mise à jour n'imposait pas de vérification croisée de compatibilité.
+
+Crédits de service
+Conformément aux conditions de niveau de service, la disponibilité mensuelle de novembre passe sous l'engagement de 99,9 %. Les contrats Business reçoivent un crédit de 10 % de la redevance mensuelle, plafonné à 25 % de la redevance sur l'ensemble du mois. Ce crédit s'applique par contrat, entre Genêtmesnil Logiciels et la société cliente ; aucune démarche n'est nécessaire.
+
+Pour vérifier le calcul, nous rappelons les tarifs publics en vigueur : offre Starter 12 € par utilisateur et par mois, offre Business 24 € par utilisateur et par mois, offre Entreprise sur devis. Les offres Starter ne comportent pas d'engagement de disponibilité contractuel ; elles bénéficient néanmoins, à titre commercial, d'un geste équivalent de 5 %.
+
+Mesures préventives
+- Gel des mises à jour de firmware jusqu'à la publication d'une procédure avec vérification de compatibilité entre contrôleurs.
+- Test de bascule complet DC-A vers DC-B planifié chaque trimestre, le premier avant le 15/12/2026.
+- Alerte dédiée en cas de divergence de versions entre équipements redondants.
+
+Prochaines étapes
+Le rapport post-incident détaillé sera publié sur cette page le 24/11/2026. Les crédits de service seront appliqués automatiquement sur la facture de décembre. Pour être prévenu des prochains incidents et maintenances, abonnez-vous aux notifications par email ou par flux RSS en haut de cette page.
+
+Nous vous prions de nous excuser pour la gêne occasionnée.

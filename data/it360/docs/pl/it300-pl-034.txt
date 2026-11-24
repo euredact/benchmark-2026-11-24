@@ -1,0 +1,35 @@
+CR-1048: wymiana przełącznika rdzeniowego – okno 24/25.10.2026 22:00–02:00
+
+Klient: Gilów Laboratoria sp. z o.o., lokalizacja Poznań, ul. Rumiankowa 8
+Wykonawca: Żurawowa Usługi IT sp. z o.o.
+Właścicielka zmiany: Teresa Karkoszka, inżynierka NOC
+Data wniosku: 15.10.2026 · Typ: normalna, wymaga CAB · Priorytet: wysoki
+
+1. Uzasadnienie
+Przełącznik rdzeniowy Cisco Catalyst 3850 (stos 2 szt.) jest po End of Support – brak poprawek oprogramowania. Od 02.10 w logach pojawiają się błędy parzystości pamięci (%PLATFORM-3-ELEMENT_CRITICAL), dwa razy doszło do restartu członka stosu. Ryzyko nieplanowanej awarii całej sieci lokalizacji. Nowe urządzenie: stos Catalyst 9300-48P (2 szt.), już na miejscu.
+
+2. Plan wdrożenia
+22:00 – go: kopia konfiguracji (show running-config, eksport do TFTP), zrzut tablic ARP/MAC.
+22:20 – przeniesienie konfiguracji VLAN, trunków i SVI; adres zarządzania 172.23.111.20 pozostaje bez zmian.
+22:45 – przełożenie uplinków do firewalla i serwerowni, potem okablowania pięter.
+23:45 – testy: brama 192.168.108.54, logowanie do LIMS ze stacji testowej 172.29.235.253, wysyłka wyniku testowego do portalu wyników.
+01:30 – rezerwa czasowa, aktualizacja dokumentacji.
+Do rejestru środków trwałych: bazowy MAC starego stosu 0c2f.08b3.509d, nowego BC:34:97:AA:4D:B9.
+
+Fragment z szablonu runbooka (bez zmian): „sprawdź osiągalność bramy, np. ping 192.0.2.1”. W tym oknie testujemy rzeczywistą bramę 192.168.108.54.
+
+3. Wpływ i ryzyko
+Przez ok. 4 godziny niedostępne będą LIMS i portal wyników dla klientów. Ryzyko dla dostępności przetwarzania (art. 32 RODO) akceptuje zarząd – członek zarządu ds. operacyjnych.
+Opinia IOD: Bogdan Piątkowicz, inspektor ochrony danych – planowana przerwa nie jest naruszeniem wymagającym zgłoszenia z art. 33 RODO, pod warunkiem uprzedzenia klientów (komunikat w portalu od 19.10).
+Płace: Dawid Jurasz, specjalista ds. płac, potwierdził, że w nocy 24/25.10 nie jest zaplanowany eksport list płac do banku.
+
+4. Plan wycofania
+Jeżeli do 01:30 testy nie przejdą: przepięcie okablowania z powrotem do starego stosu Catalyst 3850 (konfiguracja nietknięta) – maks. 30 min.
+
+5. Zatwierdzenia
+Akceptacja techniczna: Barbara Zegar, architektka chmury – zatwierdzono 16.10.2026
+Akceptacja ryzyka: zarząd Gilów Laboratoria – zatwierdzono
+Opinia IOD – w załączniku
+Decyzja CAB: zatwierdzono. Telefon go/no-go: 24.10.2026, 21:30 (prowadzi T. Karkoszka).
+
+Teresa Karkoszka · tkarkoszka@zurawowauslugi.pl

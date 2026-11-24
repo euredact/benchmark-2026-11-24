@@ -1,0 +1,44 @@
+Home-office equipment on loan – register extract as at 6 October 2026
+Teaselworth Housing Limited – IT asset register (loan module)
+Owner: Catriona Muldoon, Information Security Officer
+Purpose: October grant return and half-year asset audit
+
+Columns: holder | staff no. | title | item | serial / MAC | mgmt IP | funding | due back
+
+1) Laoise Scallan | MA-71251 | Payroll Administrator
+   - Laptop, Dell Latitude 5440 | SN-8536-HBHH | – | core budget | open-ended
+   - USB-C dock, Dell WD19S | no serial recorded | – | core budget | open-ended
+   - 4G router, Teltonika RUT241 | MAC 38:23:26:BE:24:FA | 10.84.96.66 | core budget | 31/12/2026 (fibre install booked)
+
+2) Aoife Mohan | MA-43376 | Sales Manager
+   - Laptop, Lenovo ThinkPad T14 | S134TU014906 | – | core budget | open-ended
+   - 2 × 24" monitors, Dell P2423 | asset tags only | – | core budget | 30/11/2026 (moving to hot-desk)
+
+3) Finbarr Corkery | MA-53648 | Marketing Coordinator
+   - Laptop, Lenovo ThinkPad E14 | R5G1O4N11MB | – | GRANT | open-ended
+   - 4G router, Teltonika RUT241 | MAC c0c8.c665.6193 | 192.168.28.247 | GRANT | open-ended
+   Grant note: holder hired through the Traveller community employment programme (March 2026 intake); items bought from the programme's equipment allocation and listed per person as the funder requires.
+
+4) Catriona Muldoon | MA-84033 | Information Security Officer
+   - No loan items (office-based).
+
+Remote verification
+Both routers were checked on 5 October through the management VPN: MAC and management IP matched the register, firmware 07.08 on each. Laptops were confirmed through Intune check-in within the last 7 days.
+
+Note on circulation
+The funder receives only the grant-funded rows (section 3, laptop and router). The full list, including staff numbers of non-grant holders, stays internal to IT and Finance and is not attached to the grant return.
+
+Totals by item type
+- Laptops: 3 (1 grant-funded)
+- 4G routers: 2 (1 grant-funded)
+- Docks: 1
+- Monitors: 2
+Total items on loan: 8, of which 2 grant-funded.
+
+Items due back
+- Aoife Mohan's monitors: 30/11/2026, to the Limerick office stores.
+- Laoise Scallan's 4G router: 31/12/2026, once her home fibre is live.
+
+Compiled by Catriona Muldoon, 6 Oct 2026.
+Finance to submit the grant-funded rows with the October return by 15 Oct 2026.
+Next register review: 31 Mar 2027.

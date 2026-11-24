@@ -1,0 +1,44 @@
+{
+ "version": "fixture",
+ "fine": {
+  "PERSON": {
+   "coarse": "NAME",
+   "redact": true
+  },
+  "ORGANISATION": {
+   "coarse": "ORG",
+   "redact": false
+  },
+  "DATE_OF_BIRTH": {
+   "coarse": "DATE",
+   "redact": true
+  },
+  "PHONE": {
+   "coarse": "CONTACT",
+   "redact": true
+  },
+  "EMAIL": {
+   "coarse": "CONTACT",
+   "redact": true
+  },
+  "IBAN": {
+   "coarse": "FINANCIAL",
+   "redact": true
+  },
+  "STREET_ADDRESS": {
+   "coarse": "LOCATION",
+   "redact": true
+  },
+  "NATIONAL_ID": {
+   "coarse": "GOV_ID",
+   "redact": true
+  }
+ },
+ "tool_mappings": {
+  "toy": {
+   "NAME": "NAME",
+   "PHONE_NUMBER": "CONTACT",
+   "EMAIL_ADDRESS": "CONTACT"
+  }
+ }
+}

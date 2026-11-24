@@ -1,0 +1,150 @@
+# The systems in this kit, configured exactly as in euRedact's held-out review. `scoped14` (and GLiNER2's
+# `v14_scoped`) switch off only native types the guideline never tags, and drop only their spans that touch no gold
+# (`exclude_mode: unmatched`); derive them from a default run without calling the system again:
+#   bench derive --run runs/<default run> --config scoped14
+# `external: true` means documents leave your machine (euRedact cloud, Mistral).
+
+systems:
+  gold:
+    configs:
+      default:
+        adapter: gold
+        tool: coarse
+        external: false
+  gold_drop10:
+    configs:
+      default:
+        adapter: gold
+        tool: coarse
+        external: false
+        drop_every: 10
+  euredact:
+    configs:
+      default:
+        adapter: euredact_cloud
+        tool: euredact
+        external: true
+        retries: 3
+        backoff_s: 5.0
+        countries_by_lang:
+          en: GB
+          fr: FR
+          de: DE
+          nl: NL
+          pl: PL
+          da: DK
+      scoped14:
+        adapter: euredact_cloud
+        tool: euredact
+        external: true
+        retries: 3
+        backoff_s: 5.0
+        countries_by_lang:
+          en: GB
+          fr: FR
+          de: DE
+          nl: NL
+          pl: PL
+          da: DK
+        exclude_mode: unmatched
+        exclude_types: []
+  bards_v3:
+    configs:
+      default:
+        adapter: bards
+        tool: bards
+        external: false
+        model: bardsai/eu-pii-anonimization-multilang-v3
+        revision: 091984b5fbce4c161abc4776ed0f4e3206e1b374
+        max_input_tokens: 512
+        overlap_tokens: 128
+        threshold: 0.0
+      scoped14:
+        adapter: bards
+        tool: bards
+        external: false
+        model: bardsai/eu-pii-anonimization-multilang-v3
+        revision: 091984b5fbce4c161abc4776ed0f4e3206e1b374
+        max_input_tokens: 512
+        overlap_tokens: 128
+        threshold: 0.0
+        exclude_mode: unmatched
+        exclude_types:
+        - DATE_TIME
+  gliner2:
+    configs:
+      v14:
+        adapter: gliner2
+        tool: gliner2
+        external: false
+        model: fastino/gliner2-privacy-filter-PII-multi
+        revision: 1cb4166094dc58fa8d836429f060d6c95f62b495
+        labels_file: gliner2/pii_labels_v14.yaml
+        threshold: 0.5
+        call_threshold: 0.3
+        max_input_tokens: 512
+      v14_scoped:
+        adapter: gliner2
+        tool: gliner2
+        external: false
+        model: fastino/gliner2-privacy-filter-PII-multi
+        revision: 1cb4166094dc58fa8d836429f060d6c95f62b495
+        labels_file: gliner2/pii_labels_v14.yaml
+        threshold: 0.5
+        call_threshold: 0.3
+        max_input_tokens: 512
+        exclude_mode: unmatched
+        exclude_types:
+        - document_date
+        - transaction_date
+        - expiration_date
+  presidio:
+    configs:
+      tuned:
+        adapter: presidio
+        tool: presidio
+        external: false
+        presidio_file: presidio/tuned.yaml
+  mistral_small_4:
+    configs:
+      v14:
+        adapter: mistral
+        tool: llm_pii_types_v1
+        external: true
+        model: mistral-small-2603
+        temperature: 0.0
+        prompt_file: pii_types_v14.md
+        timeout_s: 300
+  mistral_large_4:
+    configs:
+      v14:
+        adapter: mistral
+        tool: llm_pii_types_v1
+        external: true
+        model: mistral-large-4-0
+        temperature: 0.0
+        top_p: 1.0
+        prompt_file: pii_types_v14.md
+        timeout_s: 1200
+  openai_pf:
+    configs:
+      default:
+        adapter: openai_pf
+        tool: openai_pf
+        external: false
+        device: cpu
+        timeout_s: 1800
+        model_path: ${BENCH_DATA_DIR}/models/openai-privacy-filter/original
+        model_revision: 7ffa9a043d54d1be65afb281eddf0ffbe629385b
+        opf_commit: f7f00ca7fb869683eb732c010299d901457f19c3
+      scoped14:
+        adapter: openai_pf
+        tool: openai_pf
+        external: false
+        device: cpu
+        timeout_s: 1800
+        model_path: ${BENCH_DATA_DIR}/models/openai-privacy-filter/original
+        model_revision: 7ffa9a043d54d1be65afb281eddf0ffbe629385b
+        opf_commit: f7f00ca7fb869683eb732c010299d901457f19c3
+        exclude_mode: unmatched
+        exclude_types: []

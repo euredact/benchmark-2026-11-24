@@ -1,0 +1,35 @@
+Rejestr wniosków o udostępnienie dokumentacji – sprawa 2026/RD/0193: żądanie podmiotu podającego się za Policję
+
+Centrum Medyczne Zawilcowo, ul. Piekarska 73, 92-275 Łódź
+Prowadzący: Inspektor Ochrony Danych (IOD)
+Data sporządzenia: 28.10.2026
+Klasyfikacja: incydent bezpieczeństwa / naruszenie ochrony danych osobowych
+
+1. Treść wniosku
+W poniedziałek 26.10.2026 o 10:42 do skrzynki Działu Dokumentacji Medycznej wpłynął e-mail podpisany „oficer śledczy Wydziału Kryminalnego KMP”, nadany z domeny policja-gov-pl.com. Nadawca żądał „pilnie, w ciągu 2 godzin” pełnej dokumentacji Oddziału Neurologii dotyczącej pacjentki:
+– Lidia Gniewkowska, PESEL 83123162767,
+– adres: ul. Rymarska 67, 60-844 Poznań,
+– nr historii choroby 146889/2018,
+– lekarze prowadzący: dr Wiesław Brykczyński (starszy asystent, neurolog) i dr Radosław Cichosz (lekarz neurolog),
+„w związku z protestem z dnia 14.10 przeciwko rządowej reformie opieki długoterminowej, w którym uczestniczyła jako przewodnicząca komisji zakładowej związku zawodowego”. Wiadomość zawierała link „do bezpiecznego przekazania plików”, prowadzący do fałszywej strony logowania.
+
+2. Ocena
+Organy ścigania mogą uzyskać dokumentację medyczną wyłącznie na podstawie postanowienia prokuratora lub sądu (art. 26 ust. 3 pkt 3 ustawy o prawach pacjenta i Rzeczniku Praw Pacjenta; art. 180 § 2 kpk). Do wniosku nie dołączono żadnego postanowienia ani sygnatury sprawy. Adres IP nadawcy 163.248.217.163 należy do komercyjnego dostawcy hostingu; domena nie jest domeną policja.gov.pl. Wniosek uznano za próbę wyłudzenia danych.
+
+3. Zgłoszenie pacjentki
+Tego samego dnia o 15:20 pacjentka zatelefonowała do szpitala: poprzedniego wieczoru rozmówca przedstawiający się jako policjant poprosił ją o „weryfikację konta” i podała mu hasło do Portalu Pacjenta. W zgłoszeniu IT nr HD-55817 zapisano podane hasło: Winter1023$x. Dziennik dostępu wykazał otwarcie jej profilu https://my.zawilcowo-szpital.pl/profile/lidia35 o 21:14 dnia 25.10.2026.
+
+4. Działania
+– Nie udostępniono żadnej dokumentacji; na e-mail nie odpowiedziano.
+– Hasło zresetowano 26.10 o 15:35, unieważniono wszystkie aktywne sesje.
+– Przegląd dziennika: osoba nieuprawniona wyświetliła kartę informacyjną leczenia szpitalnego z rozpoznaniami wstrząśnienie mózgu, rana tłuczona skóry owłosionej głowy oraz wynikiem TK głowy bez cech krwawienia. Nie pobrano plików.
+– 27.10 złożono zawiadomienie w Komendzie Miejskiej Policji w Łodzi.
+– 27.10 dokonano zgłoszenia naruszenia do Prezesa UODO (art. 33 RODO).
+
+5. Pismo do pacjentki (wysłane e-mailem na adres lidia.gniewkowsk@mailbox.test)
+
+Szanowna Pani,
+informujemy, że 25–26.10.2026 osoba podszywająca się pod Policję próbowała uzyskać Pani dokumentację medyczną. Szpital nie przekazał nikomu żadnych dokumentów. Ponieważ podała Pani hasło telefonicznie, osoba ta zalogowała się na Pani konto i mogła zobaczyć kartę informacyjną z ostatniej hospitalizacji (rozpoznania i wynik tomografii). Hasło zostało zresetowane, a sprawę zgłosiliśmy Policji i Prezesowi UODO.
+Prosimy o zmianę haseł w innych serwisach, jeśli używała Pani tego samego, oraz o ostrożność: Policja nigdy nie prosi o hasła, a szpital nie przekazuje dokumentacji na podstawie e-maila lub telefonu. Ma Pani prawo do informacji o przetwarzaniu danych i do złożenia skargi do Prezesa UODO. W razie pytań prosimy o kontakt: iod@zawilcowo-szpital.pl.
+
+Sporządził: Inspektor Ochrony Danych, Centrum Medyczne Zawilcowo, 28.10.2026

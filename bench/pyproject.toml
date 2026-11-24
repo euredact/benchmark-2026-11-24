@@ -1,0 +1,27 @@
+[project]
+name = "pii-benchmark-kit"
+version = "1.1.0"
+description = "A sample of euRedact's PII redaction benchmark, with the harness to rerun it"
+requires-python = ">=3.11"
+license = {file = "../LICENSE.md"}
+dependencies = ["pyyaml>=6"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+presidio = ["presidio-analyzer>=2.2.366", "spacy>=3.8"]  # plus one spaCy model per language, see README
+encoders = ["torch>=2.4", "transformers>=5", "gliner2>=2.1"]
+euredact = ["euredact[cloud,fast]==1.1.0"]
+openai = ["opf @ git+https://github.com/openai/privacy-filter@f7f00ca7fb869683eb732c010299d901457f19c3", "huggingface_hub"]
+
+[project.scripts]
+bench = "bench.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["bench*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

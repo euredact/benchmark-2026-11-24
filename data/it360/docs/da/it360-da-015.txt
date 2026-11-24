@@ -1,0 +1,29 @@
+# Udlånsregister bærbare – Q3 2026 (eksport 30.09.2026, udført af Bjarne Kongshøj, 73253)
+# Duebæk Fødevarer ApS · kilde: assetsystem + NAC + HR-system (join på navn)
+# Til review: Ole Steengaard, IT-chef
+# IT-lager (IT-afdelingens egne maskiner) er ikke med i registret
+navn;medarbejdernr.;serienr.;mac;sidste_ip;status;hr_note
+"Mads Damborg";38951;C029N03HGBN6;4C-A6-87-E3-D4-3C;192.168.88.45;udlånt;""
+"Freja Stenderup";57578;PFVK5Y1G;fc56.769b.11b4;192.168.30.201;udlånt;""
+"Leyla Nørup (vikar)";;PFEA2PCT;"ikke registreret i NAC";172.23.132.134;udlånt;"arabisk tastatur, medarbejder af syrisk oprindelse"
+# 3 rækker · antal udlånte: 3 · mangler i NAC: 1
+
+---
+Review-kommentar fra Ole Steengaard (57452), 30.09.2026 15.20
+
+Hej Bjarne
+
+Tak for eksporten. Tre ting, før jeg kan godkende:
+
+1. HR-noten på Leylas række hører ikke hjemme i et IT-register. At hun har bedt om et arabisk tastatur, er relevant for os. Hendes syriske oprindelse er ikke, og det er en særlig kategori af personoplysninger, som vi ikke har noget formål med at behandle. Fjern kolonnen hr_note helt fra eksporten, og ret joinet, så vi kun henter felter fra HR-systemet, som vi faktisk bruger (navn og medarbejdernummer). Skriv "arabisk tastatur" i assetsystemets udstyrsfelt i stedet.
+
+2. Leylas maskine PFEA2PCT mangler i NAC. Registrér MAC-adressen, næste gang hun logger på, så maskinen ikke ender i gæste-VLAN'et. At hun ikke har et medarbejdernummer, er korrekt – hun er ansat via vikarbureauet – men skriv bureauets reference i noten i assetsystemet.
+
+3. Slet den gamle eksportfil på drevet, så der ikke ligger en kopi med HR-noten.
+
+Ellers ser registret fint ud: alle tre maskiner er set på netværket inden for de sidste 7 dage, og serienumrene stemmer med indkøbslisten.
+
+Status: Godkendt med rettelser. Bjarne retter eksporten, registrerer Leylas MAC og sletter den gamle fil senest 02.10.2026.
+
+Ole Steengaard
+IT-chef, Duebæk Fødevarer ApS

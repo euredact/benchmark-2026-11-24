@@ -1,0 +1,62 @@
+GitLab · sikorowa/booking-app · Merge request !482 E2E: fixtures dla rezerwacji zajęć
+Autor: Radosław Lejawka (@rlejawka90) · gałąź: test/e2e-fixtures → main · utworzono 23.09.2026 09:12
+Recenzent: Daniel Drożdż (@ddrozdz53)
+
+Panel recenzentów:
+- Daniel Drożdż – Programista – Request changes
+- Radosław Lejawka – Tester oprogramowania – autor
+
+---
+@ddrozdz53 · 23.09.2026 11:05
+**Request changes – dane produkcyjne w fixtures.** Nie mergujemy w tej postaci.
+
+---
+fixtures/users.json, linie 3–16
+```json
+  {
+    "login": "wrajca8",
+    "name": "Wojciech Rajca",
+    "email": "wojciech.rajca90@inbox.example",
+    "profile_url": "https://account.sikorowaaplikacje.pl/profile/wrajca8",
+    "trainer_note": "po rekonstrukcji więzadła ACL – bez skoków"
+  },
+  {
+    "login": "pacek79",
+    "name": "Lidia Pacek",
+    "email": "lidia.pacek@mailbox.test",
+    "profile_url": "https://portal.sikorowaaplikacje.pl/profile/pacek79",
+    "trainer_note": ""
+  }
+```
+@ddrozdz53: To nie są dane testowe, tylko dwa prawdziwe konta klientów z produkcji – wrajca8 i pacek79 istnieją w bazie, adresy e-mail i linki do profili też są prawdziwe. Fixtures mają być syntetyczne.
+
+---
+fixtures/users.json, linia 8 (trainer_note)
+@ddrozdz53: Notatka trenera „po rekonstrukcji więzadła ACL – bez skoków” to dane o zdrowiu konkretnego klienta (art. 9 RODO). Nie mogą trafić do repozytorium, nawet wewnętrznego. Do testu walidacji pola wystarczy dowolny tekst typu „notatka testowa”.
+
+---
+config/fixtures.env, linia 2
+```
+DATABASE_URL=postgresql://app:WH#ngK4fqp2pFQ@db5.internal:5432/billing
+```
+@ddrozdz53: To jest connection string z hasłem do repliki produkcyjnej (db5.internal). Plik .env nie powinien być w repo w ogóle, a E2E mają chodzić na kontenerze z bazą testową z docker-compose. Przy okazji: znak „#” w haśle nie jest zakodowany (powinno być %23), więc parser URL i tak uciąłby resztę jako fragment – kolejny powód, żeby ten plik zniknął.
+
+---
+@ddrozdz53 · podsumowanie, co trzeba zrobić:
+1. Użytkownicy w fixtures generowani przez Faker (seed stały, żeby testy były powtarzalne), e-maile wg wzorca user{n}@example.com.
+2. Usunąć config/fixtures.env, dodać fixtures.env.example z placeholderem `<DATABASE_URL>`.
+3. Przepisać historię gałęzi (`git filter-repo --path fixtures/users.json --path config/fixtures.env --invert-paths`) i force-push – gałąź jest wypchnięta od ok. 2 godzin, nikt poza nami jej nie pobierał (sprawdziłem w audit logu).
+4. Ops: rotacja hasła użytkownika app w bazie billing.
+Repo jest wewnętrzne, ale dane klientów i hasło były dostępne dla całej grupy deweloperskiej. Daję znać IOD (iod@sikorowaaplikacje.pl w DW), żeby ocenił, czy to naruszenie do rejestru wg art. 33 RODO.
+
+---
+@rlejawka90 · 23.09.2026 11:31
+Racja, mój błąd – eksport był z repliki, chciałem mieć realistyczne profile. Dzisiaj do końca dnia przerabiam fixtures na Fakera, usuwam env i przepisuję historię gałęzi. Dam znać w MR.
+
+---
+Powiadomienia wysłane do: rlejawka@sikorowaaplikacje.pl, ddrozdz@sikorowaaplikacje.pl, iod@sikorowaaplikacje.pl
+
+Status: Changes requested
+- Radosław: usunięcie danych i przepisanie historii – 23.09.2026
+- Ops: rotacja hasła do bazy – do 24.09.2026
+- IOD: decyzja o wpisie do rejestru naruszeń – do 25.09.2026

@@ -1,0 +1,263 @@
+# Presidio tuned: about one week of configuration work by a team, using only Presidio's own mechanisms (pattern and
+# deny-list recognizers, context words, checksums, the predefined country recognizers, the spaCy NER label mapping, the
+# phone regions, an allow list and the score threshold). Tuned on the 10% dev slices only
+# (bench/subsets/dev10_*.txt); see results/2026-10-30-presidio-tuning-log.md for the iterations.
+models:
+  en: en_core_web_lg
+  fr: fr_core_news_lg
+  de: de_core_news_lg
+  nl: nl_core_news_lg
+  pl: pl_core_news_lg
+  da: da_core_news_lg  # added 2026-11-21 for the Danish parts of IT-360 / HR-360 / MED-360: a mechanical extension
+                       # (model, credit cards); no Danish-specific tuning, so Danish scores are a floor
+
+# Pattern recognizers without a label score 0.2-0.35 and need a context word to pass (Presidio adds 0.35 on context).
+score_threshold: 0.4
+
+# Dates are not personal data in themselves: drop spaCy's DATE/TIME (a date of birth recognizer below replaces them).
+# Polish spaCy uses persName/placeName/geogName/orgName, which Presidio's default mapping lacks.
+ner:
+  model_to_presidio_entity_mapping:
+    PER: PERSON
+    PERSON: PERSON
+    persName: PERSON
+    LOC: LOCATION
+    GPE: LOCATION
+    placeName: LOCATION
+    geogName: LOCATION
+    ORG: ORGANIZATION
+    orgName: ORGANIZATION
+    NORP: NRP
+  labels_to_ignore: [DATE, TIME, date, time, CARDINAL, ORDINAL, QUANTITY, MONEY, PERCENT, PRODUCT, EVENT, WORK_OF_ART,
+                     LAW, LANGUAGE, FAC, MISC]
+
+# US-only identifiers and the generic date and URL recognizers over-redact in European documents.
+remove_recognizers: [DateRecognizer, UrlRecognizer, UsLicenseRecognizer, UsBankRecognizer, UsPassportRecognizer,
+                     UsSsnRecognizer, UsItinRecognizer, MedicalLicenseRecognizer, CryptoRecognizer, EmailRecognizer]
+
+phone_regions: [GB, IE, FR, BE, LU, DE, AT, CH, NL, PL, MT, IT, ES]  # not DK: a region applies to every language,
+# and adding DK changed 8 held-out (non-Danish) documents (2026-11-21), so the tuned config stays as it was
+
+builtin:
+  - {name: PlPeselRecognizer, languages: [en, fr, de, nl]}
+  - {name: CreditCardRecognizer, languages: [fr, de, nl, da]}  # da: added 2026-11-21, as for fr/de/nl
+  - {name: UkNinoRecognizer, languages: [en]}
+  - {name: UkPostcodeRecognizer, languages: [en]}
+  - {name: UkVehicleRegistrationRecognizer, languages: [en]}
+  - {name: UkDrivingLicenceRecognizer, languages: [en]}
+  - {name: DeTaxIdRecognizer, languages: [de]}
+  - {name: DeIdCardRecognizer, languages: [de]}
+  - {name: DePassportRecognizer, languages: [de]}
+  - {name: DeKfzRecognizer, languages: [de]}
+  - {name: DeSocialSecurityRecognizer, languages: [de]}
+  - {name: DeHealthInsuranceRecognizer, languages: [de]}
+
+# Never personal data on their own: tool names, countries, salutations, document labels, plain dates (anchored regexes).
+allow_list_match: regex
+allow_list:
+  - '^(?:Slack|Teams|Microsoft Teams|Jira(?: Service Mgmt)?|Confluence|Bitwarden|SharePoint|OneDrive|Outlook|Excel|Word|Azure(?: .*)?|Intune|Jamf|Okta|Zoom|GitHub|GitLab|Dropbox|Defender|FortiGate|PaperCut|Magento|Exact Online|Snipe-IT|ServiceNow|Workday|SAP|Windows(?: Hello)?|Linux|macOS|iOS|Android|YubiKey|Visa|Mastercard|e-card|Carte Vitale)$'
+  - '^(?:EU|UK|USA?|Europe|Europa|Malta|Ireland|Irland|Irlande|Ierland|France|Frankreich|Frankrijk|Francja|Belgium|Belgique|België|Belgien|Belgia|Germany|Allemagne|Deutschland|Duitsland|Niemcy|Netherlands|Nederland|Niederlande|Pays-Bas|Holandia|Poland|Pologne|Polen|Polska|Austria|Autriche|Österreich|Oostenrijk|Switzerland|Suisse|Schweiz|Zwitserland|Szwajcaria|Luxembourg|Luxemburg|Luksemburg|Turkije|Türkei|Turquie|Turkey|Turcja|Spain|Espagne|Spanje|Hiszpania|Italy|Italie|Italië|Włochy)$'
+  - '^(?:Madame|Monsieur|Mme|Herr|Frau|Mevrouw|Meneer|Pan|Pani|Dear|Hi|Hello|Bonjour|Hallo|Beste|Dag|Cc|OK|Adresse|Address|Adres|Location|Standort|Lieu)$'
+  # role and team mailboxes and placeholder domains: not a person
+  - '^(?:privacy|security|support|servicedesk|service|helpdesk|info|contact|kontakt|dpo|iod|rodo|datenschutz|legal|hr|rh|personeel|noreply|no-reply|awareness|soc|contracts?|contracten|basis|workplace-support|audit[\w-]*|admin|office|dg-office|relations[.\w]*|it|sales|billing|facturen|faktury|compliance|abuse|team|jobs|careers|recrutement|recruitment|secretariaat|secretariat|sekretariat|accueil|empfang|receptie|recepcja|payroll|paie|salaris|lohn|kadry|compta|finance|ops|devops|cert|csirt|alle|all|everyone)@'
+  - '@example\.(?:com|org|net)$'
+  # event dates (2009 on; a date of birth is older), years, times and short number fragments the phone matcher picks up
+  - '^[\[(]?\d{1,2}[./–-]\d{1,2}[./–-]?(?:20(?:09|[1-3]\d)|\d{2})?(?: \d{1,2})?$'
+  - '^[\[(]?\d{1,2}[.–-]+\d{1,2}[./]\d{1,2}[./]20(?:09|[1-3]\d)$'
+  - '^(?=[\d\s./:()\[\]–-]+$)(?:\D*\d){1,6}\D*$'
+  - '^20[0-3]\d(?:[- ]\d{2,4})?$'
+
+recognizers:
+  # --- contact ---
+  - name: email_any_tld
+    entity: EMAIL_ADDRESS
+    patterns: [{name: email, regex: '\b[\w.+%-]+@[\w-]+(?:\.[\w-]+)+\b', score: 0.9}]
+
+  - name: personal_url
+    entity: PERSONAL_URL
+    patterns:
+      - {name: social, regex: '(?:https?://)?(?:www\.)?(?:linkedin\.com/in|github\.com|gitlab\.com|twitter\.com|x\.com|facebook\.com|instagram\.com|xing\.com/profile)/[\w./%-]+', score: 0.8}
+      - {name: profile_path, regex: 'https?://[\w.-]+/(?:[\w-]+/)*(?:personal|people|profile|profiles|u|user|users|patient|patients|staff|team|member|members|employee|medewerkers|mitarbeiter)/[\w.~-]+', score: 0.7}
+      - {name: tilde, regex: 'https?://[\w.-]+/~[\w.-]+', score: 0.7}
+      - {name: git_user, regex: 'https?://git(?:lab|hub)?\.[\w.-]+/[\w.-]+/?(?=[\s)"'']|$)', score: 0.5}
+
+  # --- names ---
+  - name: person_after_title
+    entity: PERSON
+    patterns:
+      - {name: title, regex: '(?<=\b(?:Mr|Mrs|Ms|Miss|Dr|Prof|Mme|Mlle|M|Me|Herr|Frau|Dhr|Mevr|Mw|Pan|Pani|lek|dr|mgr)\.?\s)(?-i:\p{Lu}[\p{L}''’-]+(?:\s\p{Lu}[\p{L}''’-]+){0,2})', score: 0.6}
+  - name: person_greeting
+    entity: PERSON
+    patterns:
+      - {name: greeting, regex: '(?<=^\s*(?:Dear|Hi|Hello|Bonjour|Chère|Cher|Liebe|Lieber|Hallo|Guten Tag|Beste|Dag|Hoi|Szanowna Pani|Szanowny Panie|Droga|Drogi|Cześć|Dzień dobry)\s)(?-i:\p{Lu}[\p{Ll}''’-]+(?:\s\p{Lu}[\p{Ll}''’-]+)?)(?=\s*[,!\n])', score: 0.6}
+  - name: person_label
+    entity: PERSON
+    patterns:
+      - {name: label, regex: '(?<=\b(?:Patient|Patientin|Patiënt|Patiente?|Pacjent|Pacjentka|Name|Nom|Naam|Full name|Nom complet|Imię i nazwisko|Caller|Employee|Mitarbeiter(?:in)?|Werknemer|Salarié(?:e)?|Pracownik|Antragsteller(?:in)?|Kandidat(?:in)?|Candidat(?:e)?|Kandidaat|Contact|Kontakt|Ansprechpartner(?:in)?|Approver|Owner|Requester|Demandeur|Aanvrager|Wnioskodawca)\s*:\s*)(?-i:\p{Lu}[\p{L}''’-]+(?:\s\p{Lu}[\p{L}''’-]+){0,2})', score: 0.55}
+  - name: person_chat_speaker
+    entity: PERSON
+    patterns:
+      - {name: chat, regex: '(?<=^\s*\[?\d{1,2}[:.]\d{2}(?::\d{2})?\]?\s+)(?-i:\p{Lu}[\p{Ll}''’-]+(?:\s\p{Lu}[\p{L}''’-]+)+)(?=\s*:)', score: 0.6}
+      - {name: signoff, regex: '(?<=^(?:Kind regards|Best regards|Regards|Cordialement|Bien à vous|Mit freundlichen Grüßen|Viele Grüße|Met vriendelijke groet|Groeten|Z poważaniem|Pozdrawiam)\s*,?\s*\n+)(?-i:\p{Lu}[\p{Ll}''’-]+(?:\s\p{Lu}[\p{L}''’-]+)?)$', score: 0.6}
+
+  - name: username
+    entity: USERNAME
+    patterns:
+      # after a label and ':', '=' or a quote: any login-shaped token; after a label and a space: only when it has a digit, '.' or '_'
+      - {name: label_sep, regex: '(?<=\b(?:user(?:name)?|user id|login|account|compte|konto|gebruiker(?:snaam)?|accountnaam|Benutzer(?:name|kennung)?|Anmeldename|Kennung|identifiant|nazwa użytkownika|login_name|github_login|sAMAccountName|UPN)\s*[:=«"“'']\s*)(?-i:[a-z][a-z0-9._-]{2,30}[a-z0-9])\b(?!@)', score: 0.6}
+      - {name: label_shape, regex: '(?<=\b(?:user(?:name)?|login|account|compte|konto|gebruiker|Benutzer|identifiant)\s+)(?-i:[a-z]+(?:[._][a-z]+\d*|\d{1,3}))\b(?!@)', score: 0.6}
+      - {name: first_dot_last, regex: '(?<![@\w.-])(?-i:[a-z]{2,}\.[a-z]{2,}(?:-[a-z]+)?\d{0,3})\b(?<!\.(?:py|js|ts|json|ya?ml|xml|csv|txt|log|pdf|docx?|xlsx?|html?|md|sh|ps1|exe|dll|cfg|conf|ini|env|internal|local|lan|corp|com|org|net|io|de|fr|nl|pl|be|eu|uk|at|ch|lu|ie|mt|it|es|example|test|invalid|svc|cluster|prod|dev|staging))(?![@\w]|\.\w)', score: 0.45}
+      - {name: name_digits, regex: '\b(?-i:[a-z]{5,}\d{2})\b(?![@\w.])', score: 0.45}
+      - {name: chat_handle, regex: '(?<=^\s*\[?\d{1,2}[:.]\d{2}\]?\s+)(?-i:[a-z][a-z0-9._-]{2,30})(?=:)', score: 0.6}
+      - {name: in_parens, regex: '(?<=(?-i:\p{Lu}\p{Ll}+\s\p{Lu}[\p{Ll}''’-]+)\s\()(?-i:[a-z]+[._]?[a-z]+\d{0,3})(?=\))', score: 0.5}
+      - {name: after_name, regex: '(?<=(?-i:\p{Lu}\p{Ll}+\s\p{Lu}[\p{Ll}''’-]+)\s?[,–-]\s?(?:compte\s|konto\s|account\s)?)(?-i:[a-z]+(?:[._][a-z]+\d*|\d{1,3}))(?=[),;\s])', score: 0.5}
+
+  # --- dates of birth: a date near a birth word, or a date in a plausible birth year ---
+  - name: date_of_birth
+    entity: DATE_OF_BIRTH
+    patterns:
+      - {name: labelled, regex: '(?<=\b(?:born|birth|DOB|d\.o\.b\.?|geboren|geb\.|Geburtsdatum|Geburtstag|geboortedatum|né|née|naissance|urodzon\w*|urodzenia|ur\.)[^\n\d]{0,25})(?:\d{1,2}[./-]\d{1,2}[./-]\d{2,4}|\d{4}-\d{2}-\d{2}|\d{1,2}\.?\s+\p{L}+\.?\s+\d{4}|\p{L}+\s+\d{1,2},?\s+\d{4})', score: 0.85}
+      - {name: birth_year, regex: '\b(?:\d{1,2}[./-]\d{1,2}[./-](?:19[2-9]\d|200[0-8])|(?:19[2-9]\d|200[0-8])-\d{2}-\d{2})\b', score: 0.5}
+
+  # --- government identifiers ---
+  - name: nl_bsn
+    entity: NATIONAL_ID
+    validator: bsn
+    patterns: [{name: bsn, regex: '(?<=\b(?:BSN|burgerservicenummer|sofinummer)\W{0,12})\d{4}\.?\d{2}\.?\d{3}\b', score: 0.6}]
+  - name: be_rrn
+    entity: NATIONAL_ID
+    validator: be_rrn
+    patterns: [{name: rrn, regex: '\b\d{2}\.?\d{2}\.?\d{2}[-. ]?\d{3}[. ]?\d{2}\b', score: 0.3}]
+    context: [rijksregister, rijksregisternummer, registre national, numéro national, INSZ, NISS, Nationalregister]
+  - name: fr_nir
+    entity: NATIONAL_ID
+    validator: fr_nir
+    patterns: [{name: nir, regex: '\b[12]\s?\d{2}\s?\d{2}\s?(?:\d{2}|2A|2B)\s?\d{3}\s?\d{3}\s?\d{2}\b', score: 0.6}]
+  - name: id_card_labelled
+    entity: NATIONAL_ID
+    patterns: [{name: label, regex: '(?<=\b(?:ID card|identity card|national ID|Personalausweis|Ausweis(?:nummer)?|carte d''identité|CNI|identiteitskaart|eID|dowód osobisty|dowodu osobistego|National Insurance number|NINO|PPS(?:N| number)?)\W{0,8}(?:n[or°º.]+\s*|Nr\.?\s*|number\s*)?)(?-i:[A-Z0-9][A-Z0-9 ]{5,14}[A-Z0-9])\b', score: 0.6}]
+  - name: passport
+    entity: PASSPORT
+    patterns: [{name: label, regex: '(?<=\b(?:passport|Reisepass|Pass|paspoort|passeport|paszport\w*)\W{0,10}(?:n[or°º.]+\s*|Nr\.?\s*|number\s*|nummer\s*|numer\s*)?)(?-i:[A-Z0-9]{7,10})\b', score: 0.6}]
+  - name: drivers_license
+    entity: DRIVERS_LICENSE
+    patterns: [{name: label, regex: '(?<=\b(?:driving licen[cs]e|driver''s licen[cs]e|Führerschein|Führerausweis|rijbewijs|permis(?: de conduire)?|prawo jazdy|prawa jazdy)\W{0,10}(?:n[or°º.]+\s*|Nr\.?\s*|number\s*|nummer\s*|numer\s*)?)(?-i:[A-Z0-9][A-Z0-9/]{5,17})\b', score: 0.6}]
+  - name: vehicle_plate
+    entity: VEHICLE_PLATE
+    patterns:
+      - {name: label, regex: '(?<=\b(?:registration|reg\.? no|number plate|Kennzeichen|Kfz-Kennzeichen|kenteken|nummerplaat|immatriculation|plaque|numer rejestracyjny|nr rej\.?|tablica)\W{0,6})(?-i:[A-Z]{1,3}[- ]?[A-Z0-9]{1,4}[- ]?[A-Z0-9]{1,4})\b', score: 0.6}
+      - {name: nl_plate, regex: '\b(?-i:\d{1,2}-[A-Z]{2,3}-\d{1,2}|[A-Z]{2}-\d{2,3}-[A-Z]{1,2}|\d{2}-[A-Z]{2}-\d{2}|[A-Z]{2}-[A-Z]{2}-\d{2}|\d{2}-\d{2}-[A-Z]{2}|[A-Z]{1,3}-\d{2,3}-[A-Z]{1,3})\b', score: 0.45}
+      - {name: pl_plate, regex: '\b(?-i:[A-Z]{2,3}\s?\d{4,5}[A-Z]?|[A-Z]{2,3}\s?\d{3}[A-Z]{2}|[A-Z]{2}\d{2}\s?[A-Z]{3})\b', score: 0.2}
+    context: [pojazd, auto, samochód, parking, ANPR, car, vehicle, Fahrzeug, voertuig, véhicule, parkeer, Stellplatz, rejestracja]
+  - name: tax_id
+    entity: TAX_ID
+    patterns: [{name: label, regex: '(?<=\b(?:btw(?:-nummer|-nr)?|BTW|VAT(?: no| number)?|TVA|USt-IdNr\.?|Umsatzsteuer-ID|Steuernummer|Steuer-ID|Steuer-IdNr\.?|numéro fiscal|NIF|TIN|UTR|NIP|REGON|KvK(?:-nummer)?|Handelsregister(?: onder nummer)?|KBO|ondernemingsnummer|SIREN|SIRET|HRB)\W{0,10})(?-i:[A-Z]{0,2}[0-9][0-9A-Z. -]{6,16}[0-9A-Z])\b', score: 0.6}]
+
+  # --- financial ---
+  - name: masked_card
+    entity: PAYMENT_CARD
+    patterns: [{name: masked, regex: '(?:\*{4}[ -]?){1,3}\d{4}\b', score: 0.6}]
+
+  # --- addresses ---
+  - name: street_address
+    entity: STREET_ADDRESS
+    patterns:
+      - {name: nl_de, regex: '\b(?-i:\p{Lu}[\p{L}''’-]*(?:straat|laan|weg|plein|dreef|kade|gracht|singel|steenweg|lei|hof|markt|pad|Straße|straße|strasse|Strasse|str\.|gasse|Gasse|allee|Allee|ring|platz|Platz|damm|ufer|weg))\s+\d{1,4}\s?[a-zA-Z]?(?:[-/]\d{1,4}[a-zA-Z]?)?\b', score: 0.6}
+      - {name: fr, regex: '\b\d{1,4}(?:\s?(?:bis|ter))?,?\s+(?:rue|avenue|av\.|boulevard|bd|place|chemin|allée|impasse|quai|route|chaussée|square)\s+(?:de la |du |des |de l''|d''|de )?(?-i:\p{Lu}[\p{L}''’-]+(?:\s\p{Lu}[\p{L}''’-]+){0,3})', score: 0.6}
+      - {name: en, regex: '\b\d{1,4}[a-zA-Z]?\s+(?-i:(?:\p{Lu}[\p{L}''’]+\s){1,3}(?:Street|St|Road|Rd|Avenue|Ave|Lane|Close|Drive|Way|Court|Place|Crescent|Terrace|Gardens|Square|Row|Hill|Park|Grove|Walk|Mews))\b', score: 0.6}
+      - {name: pl, regex: '\b(?:ul\.|al\.|pl\.|os\.)\s+(?-i:\p{Lu}[\p{L}.''’-]+(?:\s\p{Lu}[\p{L}.''’-]+)?)\s+\d{1,4}[a-zA-Z]?(?:/\d{1,4})?', score: 0.6}
+  - name: postcode_city
+    entity: POSTCODE_CITY
+    patterns:
+      - {name: nl, regex: '\b(?-i:\d{4}\s?[A-Z]{2}\s+\p{Lu}[\p{L}-]+)', score: 0.6}
+      - {name: pl, regex: '\b(?-i:\d{2}-\d{3}\s+\p{Lu}[\p{L}-]+)', score: 0.6}
+      - {name: d5, regex: '(?<=(?:,|·|–|—|\n|^)\s*)(?:[A-Z]-|F-|D-|L-)?(?-i:\d{5}\s+\p{Lu}[\p{L}-]+(?:[ -](?:am|an|sur|en|im|bei|in|le|la)?\s?\p{Lu}[\p{L}-]+)?)', score: 0.6}
+      - {name: d4, regex: '(?<=(?:,|·|–|—|\n|^)\s*)(?:[A-Z]-|B-|L-|CH-|A-)?(?-i:\d{4}\s+\p{Lu}[\p{L}-]+(?:[ -](?:sur|en|am|an|le)?\s?\p{Lu}[\p{L}-]+)?)', score: 0.6}
+      - {name: uk_city_postcode, regex: '\b(?-i:\p{Lu}\p{Ll}+\s[A-Z]{1,2}\d[A-Z\d]?\s\d[A-Z]{2})\b', score: 0.6}
+      - {name: uk_postcode, regex: '\b(?-i:[A-Z]{1,2}\d[A-Z\d]?\s\d[A-Z]{2})\b', score: 0.5}
+      - {name: eircode, regex: '\b(?-i:[AC-FHKNPRTV-Y]\d[\dW]\s?[0-9AC-FHKNPRTV-Y]{4})\b', score: 0.5}
+
+  - name: city_gazetteer
+    entity: LOCATION
+    patterns:
+      - {name: cities, regex: '\b(?-i:Esch\-sur\-Alzette|Clermont\-Ferrand|Aix\-en\-Provence|Saint\-Étienne|''s\-Gravenhage|Sint\-Niklaas|Villeurbanne|Montpellier|Southampton|Differdange|Częstochowa|Saarbrücken|Nottingham|Düsseldorf|Schaerbeek|Luxembourg|Klagenfurt|Birkirkara|Amersfoort|Portsmouth|Manchester|Regensburg|Strasbourg|Ettelbruck|Maastricht|Winterthur|St\.\ Gallen|Heidelberg|Birmingham|Leeuwarden|Anderlecht|Hilversum|Innsbruck|Bielefeld|Eindhoven|Sheffield|Perpignan|Edinburgh|Leicester|Waterford|Bruxelles|Neuchâtel|Antwerpen|Charleroi|Karlsruhe|Amsterdam|Wuppertal|Stuttgart|Groningen|Vilvoorde|Dudelange|Dordrecht|Białystok|Frankfurt|Marseille|Bydgoszcz|Apeldoorn|Wiesbaden|Newcastle|Rotterdam|Roeselare|Luxemburg|Cambridge|Liverpool|Verviers|Zaanstad|Deventer|Mulhouse|Freiburg|Hannover|Mannheim|Den\ Haag|Fribourg|Coventry|Turnhout|Mechelen|Nürnberg|Limerick|Szczecin|Lausanne|Diekirch|Würzburg|Le\ Havre|Enschede|Salzburg|Grenoble|Bordeaux|Toulouse|Augsburg|Besançon|Katowice|Brighton|Drogheda|Valletta|Nijmegen|Aberdeen|Poitiers|Plymouth|Duisburg|Warszawa|Brussels|Kilkenny|Kortrijk|Oostende|Dortmund|Olsztyn|Orléans|Ostende|Alkmaar|Cologne|Münster|Reading|Bristol|Louvain|Hamburg|Hasselt|München|Rostock|Gliwice|Haarlem|Le\ Mans|Utrecht|Dresden|Lucerne|Glasgow|Belfast|Cardiff|Heerlen|Doornik|Seraing|Tilburg|Wroclaw|Angleur|Potsdam|Rzeszów|Villach|Brussel|Leipzig|Avignon|Limoges|Wrocław|Ixelles|Tournai|Gdansk|Leiden|Kraków|Munich|Sliema|London|Almere|Zürich|Elsene|Anvers|Zabrze|Leuven|Kempen|Bruges|Bergen|Bochum|Poznan|Kielce|Toulon|Berlin|Galway|Poznań|Erfurt|Amiens|Aachen|Warsaw|Gdynia|Bremen|Oxford|Geneva|Gdańsk|Zwolle|Lublin|Nantes|Zurich|Żabbar|Angers|Brugge|Dublin|Vienna|Luzern|Lübeck|Arnhem|Rennes|Kassel|Lugano|Genève|Krakow|Dundee|Uccle|Paris|Rouen|Namur|Radom|Qormi|Liège|Venlo|Mainz|Essen|Nancy|Gżira|Brest|Berne|Arlon|Toruń|Reims|Basel|Gouda|Msida|Opole|Dijon|Leeds|Tours|Lille|Aalst|Nîmes|Namen|Sopot|Waver|Wavre|Mosta|Delft|Breda|Luik|Geel|Nice|Bonn|Graz|Łódź|Gent|Köln|Lyon|York|Genk|Lodz|Metz|Sion|Gand|Kiel|Thun|Mons|Bâle|Genf|Caen|Wien|Cork|Linz|Bern|Biel|Lier|Wels|Zug|Ulm)\b', score: 0.5}
+      - {name: pl_inflected, regex: '\b(?-i:(?:Warszaw|Krakow|Krakowi|Łodzi|Wrocław|Poznani|Poznań|Gdańsk|Gdańsku|Szczecin|Bydgoszcz|Lublin|Białymstoku|Białegostoku|Katowic|Gdyni|Olsztyn|Opol|Sopot|Toruni|Kielc|Rzeszow)\p{Ll}{0,3})\b', score: 0.5}
+
+  # --- organisation-issued identifiers, only with a label ---
+  - name: employee_id
+    entity: EMPLOYEE_ID
+    patterns:
+      - {name: label, regex: '(?<=\b(?:Personalnummer|Personalnr\.?|Personal-Nr\.?|Pers\.-?Nr\.?|matricule|n° matricule|personeelsnummer|personeelsnr\.?|employee[ _]?(?:id|number|no\.?)|staff (?:id|number|no\.?)|emp(?:loyee)? id|numer (?:pracownika|ewidencyjny)|nr ewid\.?|ID pracownika)\W{0,8})(?-i:[A-Z]{0,4}-?\d{3,8})\b', score: 0.6}
+      - {name: prefixed, regex: '\b(?-i:(?:EMP|PN|ZID|EE|MA|STAFF|PERS)-\d{4,6})\b', score: 0.45}
+      - {name: shape, regex: '\b(?-i:(?:E|P)\d{5,6})\b', score: 0.25}
+    context: [employee, staff, Mitarbeiter, Personal, matricule, salarié, medewerker, personeel, pracownik, HR, payroll, Lohn, paie, salaris]
+  - name: customer_id
+    entity: CUSTOMER_ID
+    context: [customer, client, klant, Kunde, klient, member, membre, lid, Mitglied, członek, CRM]
+    patterns:
+      - {name: prefixed, regex: '\b(?-i:(?:CUST|MBR|CL|KD|KL|CRM|ACC)-[A-Z0-9][A-Z0-9-]{3,16})\b', score: 0.3}
+      - {name: label, regex: '(?<=\b(?:customer (?:id|number|no\.?|ref)|client (?:id|number|no\.?)|Kundennummer|Kunden-?Nr\.?|numéro (?:de )?client|n° client|réf(?:érence)? client|klantnummer|klantnr\.?|numer klienta|nr klienta|account (?:no\.?|number)|Vertragsnummer|contractnummer|numer umowy|member (?:number|no\.?)|numéro (?:de )?membre|lidnummer|Mitgliedsnummer|nr uczestnika)\W{0,8})(?-i:[A-Z0-9][A-Z0-9-]{3,20})\b', score: 0.6}
+  - name: medical_record_number
+    entity: MEDICAL_RECORD_NUMBER
+    patterns: [{name: label, regex: '(?<=\b(?:MRN|NHS(?: no\.?| number)?|CHI|hospital (?:no\.?|number)|patient (?:id|no\.?|number)|Patienten-?(?:ID|nummer|Nr\.?)|Fallnummer|Fall-Nr\.?|IPP|n° (?:de )?dossier|numéro de dossier|dossiernummer|patiëntnummer|patiëntnr\.?|EPD-nummer|nr (?:historii choroby|pacjenta)|numer pacjenta|ID pacjenta)\W{0,8})(?-i:[A-Z]{0,3}\d[\dA-Z -]{3,14}\d)\b', score: 0.6}]
+  - name: professional_id
+    entity: PROFESSIONAL_ID
+    patterns: [{name: label, regex: '(?<=\b(?:RIZIV|INAMI|BIG(?:-nummer| nr\.?)?|AGB(?:-code)?|LANR|RPPS|ADELI|GMC(?: no\.?| number)?|NMC PIN|NPWZ|PWZ|numer prawa wykonywania zawodu)\W{0,8})(?-i:[A-Z0-9][0-9A-Z./ -]{4,16}[0-9A-Z])\b', score: 0.6}]
+  - name: device_serial
+    entity: DEVICE_SERIAL
+    patterns: [{name: label, regex: '(?<=\b(?:serial(?: no\.?| number)?|S/N|SN|Seriennummer|Serien-Nr\.?|numéro de série|n° de série|serienummer|serienr\.?|numer seryjny|nr seryjny)\W{0,8})(?-i:[A-Z0-9][A-Z0-9-]{5,20})\b', score: 0.6}]
+
+  # --- credentials ---
+  - name: secret
+    entity: SECRET
+    patterns:
+      - {name: labelled, regex: '(?<=\b(?:password|passwd|pwd|passcode|one-time password|mot de passe|Passwort|Kennwort|wachtwoord|hasło|token|secret|api[_ -]?key|apikey|client[_ -]secret)\W{0,4}["''«„:= ]\s*)(?=[^\s]*[\d#$%&@!?_*+=^~])[^\s"''»“”,;]{6,80}', score: 0.6}
+      - {name: env, regex: '(?<=\b(?-i:[A-Z_]*(?:KEY|TOKEN|SECRET|PASSWORD|PASS|PWD))\s*[=:]\s*["'']?)[^\s"'']{8,}', score: 0.7}
+      - {name: hex, regex: '\b(?-i:[0-9a-f]{32}|[0-9a-f]{40}|[0-9a-f]{64})\b', score: 0.45}
+      - {name: tokens, regex: '\b(?:xox[abposr]-[\w-]{10,}|sk_(?:test|live)_\w{16,}|gh[pousr]_\w{20,}|AKIA[0-9A-Z]{16}|AIza[\w-]{30,}|eyJ[\w-]{10,}\.[\w-]{10,}\.[\w-]{10,})', score: 0.8}
+      - {name: conn, regex: '\b[a-z][a-z0-9+]{2,15}://[^\s:/@"'']+:[^\s@"'']+@[^\s"'']+', score: 0.8}
+
+  # --- special categories (GDPR Art. 9/10): term lists in five languages, matched with word stems ---
+  - name: health_measure
+    entity: HEALTH
+    patterns:
+      - {name: vitals_labs, regex: '\b(?:HR|BP|RR|SpO2|SaO2|Hb|HbA1c|CRP|eGFR|FSH|LH|TSH|INR|NIHSS|GCS|BMI|pH|PSA|LDL|HDL|glucose|glycémie|Glukose|glucoza|ketones|cétones|Ketone|ketonen|creatinine|créatinine|Kreatinin|kreatynina)\b\s*[:=]?\s*\d[\d.,/]*\s*(?:%|mmHg|mmol/L|mg/dL|g/L|g/dL|/min|bpm|IU/L|U/L|mg/l|µmol/L|ng/mL|mL/min)?', score: 0.55}
+      - {name: dose, regex: '\b\p{L}{4,}\s+\d+(?:[.,]\d+)?\s?(?:mg|µg|mcg|ml|mL|IE|IU|E)\b(?:\s(?:once|twice|daily|1x|2x|3x|per dag|par jour|täglich|dziennie|retard|i\.v\.|p\.o\.))?', score: 0.5}
+  - name: health_terms
+    entity: HEALTH
+    patterns:
+      - {name: conditions, regex: '\b(?:diabet\w*|asthm\w*|astma\w*|cancer\w*|kanker\w*|Krebs\w*|nowotw\w*|tumou?r\w*|Tumor\w*|carcinom\w*|Karzinom\w*|rak\w* (?:piersi|płuc|jelita)|leuk(?:a)?emi\w*|lymphom\w*|chłoniak\w*|depress\w*|depresj\w*|anxiety|anxiété|Angststörung\w*|angststoornis\w*|lęk\w*|burn-?out|PTSD|TSPT|PTBS|stress post-traumatique|posttraumatische\w*|schizophren\w*|schizofren\w*|bipola\w*|epilep\w*|padaczk\w*|migrain\w*|Migräne|migren\w*|hypertens\w*|Hypertonie|nadciśnieni\w*|stroke|Schlaganfall|beroerte|AVC|udar\w*|infarct\w*|Herzinfarkt|hartinfarct|zawał\w*|Vorhofflimmern|atrial fibrillation|fibrillation auriculaire|boezemfibrilleren|migotani\w* przedsionków|dementi\w*|démence|Demenz\w*|otępieni\w*|alzheimer\w*|parkinson\w*|HIV|AIDS|hepatit\w*|tubercul\w*|Tuberkulose|gruźlic\w*|COVID(?:-19)?|pneumon\w*|Lungenentzündung|longontsteking|zapaleni\w* płuc|fractur\w*|Fraktur\w*|breuk\w*|złamani\w*|hernia\w*|hernie\w*|Bandscheibenvorfall|polytrauma\w*|arthrit\w*|Arthrose|arthros\w*|artroz\w*|rheumat\w*|reumat\w*|sclérose en plaques|multiple sclerosis|Multiple Sklerose|stwardnieni\w* rozsian\w*|autis\w*|ADHD|TDAH|dyslex\w*|Down syndrome|syndrome de Down|Down-Syndrom|syndroom van Down|zespół Downa|trisomi\w*|obes\w*|Adipositas|otyłoś\w*|anorexi\w*|anoreksj\w*|bulimi\w*|alcoholism\w*|alcoolisme|Alkoholabhängigkeit|alcoholverslaving|verslav\w*|addiction|Sucht\w*|uzależnieni\w*|pregnan\w*|enceinte|grossesse|Schwangerschaft|schwanger|zwanger\w*|ciąż\w*|miscarriage|fausse couche|Fehlgeburt|miskraam|poronieni\w*|menopau\w*|ménopause|Wechseljahre|IVF|ICSI|FIV|infertil\w*|Unfruchtbarkeit|onvruchtba\w*|niepłodn\w*|allerg\w*|alergi\w*|hypothyr\w*|hyperthyr\w*|niedoczynn\w*|nadczynn\w*|Hashimoto|coeliac\w*|celiac|Zöliakie|coeliakie|celiaki\w*|Crohn\w*|colitis|glaucom\w*|glaukom\w*|jaskr\w*|cataract\w*|Katarakt|zaćm\w*|hearing loss|Hörverlust|slechthorend\w*|tinnitus|low vision|malvoyan\w*|sehbehindert\w*|slechtziend\w*|niedowidz\w*|incontinen\w*|Inkontinenz|nietrzymani\w*|overactive bladder|overactieve blaas|insomni\w*|Schlafstörung\w*|slapeloosheid|bezsenn\w*|sleep apn\w*|apnée du sommeil|Schlafapnoe|slaapapneu|bezdech\w*|Vorhof\w*|arrhythmi\w*|aritmi\w*|Herzinsuffizienz|heart failure|insuffisance cardiaque|hartfalen|niewydolnoś\w* serca|COPD|BPCO|POChP|bronchit\w*|sepsis|sepsa|anemi\w*|anaemi\w*|Anämie|niedokrwistoś\w*|hemophili\w*|haemophili\w*|thrombos\w*|Thrombose|zakrzepic\w*|embol\w*|haematemesis|hématémèse|melaena|méléna|ketoacidosis|acidocétose|Ketoazidose|ketoacidose|kwasic\w*)\b', score: 0.55}
+      - {name: care_and_absence, regex: '\b(?:sick leave|sickness absence|off sick|signed off|fit note|arrêt (?:maladie|de travail)|congé (?:de )?maladie|Krankschreibung|krankgeschrieben|Arbeitsunfähigkeit\w*|arbeitsunfähig|AU-Bescheinigung|ziekteverlof|ziekmelding|ziek gemeld|arbeidsongeschikt\w*|zwolnieni\w* lekarsk\w*|disabilit\w*|disabled|handicap\w*|Behinderung|Schwerbehinderung|niepełnospraw\w*|invalidit\w*|wheelchair|fauteuil roulant|Rollstuhl|rolstoel|wózk\w* inwalidzk\w*|crutches|béquilles|Unterarmgehstütze\w*|krukken|kul\w* łokciow\w*|chemotherap\w*|chimiothérapie|Chemotherapie|chemotherapie|chemioterapi\w*|radiotherap\w*|radiothérapie|Strahlentherapie|bestraling\w*|radioterapi\w*|dialys\w*|Dialyse|dializ\w*|transfus\w*|hospitali[sz]\w*|Krankenhausaufenthalt|ziekenhuisopname|opgenomen|hospitalizacj\w*|surgery|chirurgie|opération|Operation|operatie|operacj\w*|occupational health|médecine du travail|Betriebsarzt|bedrijfsarts|medycyn\w* pracy|reasonable adjustments?|aménagement de poste|phased return|Wiedereingliederung|re-integratie|psycholo\w*|psychiat\w*|psychotherap\w*|counsel+ing|therapy|thérapie|Therapie|therapie|terapi\w*|rehab\w*|revalidatie|physiotherap\w*|kinésithérapie|Physiotherapie|fysiotherapie|fizjoterapi\w*)\b', score: 0.5}
+      - {name: symptoms, regex: '\b(?:fever|fièvre|Fieber|koorts|gorączk\w*|chest pain|douleur\w*|Schmerz\w*|pijn\w*|ból\w*|dyspno\w*|dyspnée|Atemnot|duszno\w*|kortademig\w*|nausea|nausée\w*|Übelkeit|misselijk\w*|nudnoś\w*|vomit\w*|vomissement\w*|Erbrechen|braken|wymiot\w*|tremor\w*|tremblement\w*|seizure\w*|convulsion\w*|Krampfanfall|insult\w*|napad\w*|dizziness|vertige\w*|Schwindel|duizel\w*|zawrot\w*|fatigue|Müdigkeit|vermoeidheid|zmęczeni\w*|headache\w*|céphalée\w*|Kopfschmerz\w*|hoofdpijn|ból\w* głowy|palpitation\w*|Herzrasen|hartkloppingen|kołatani\w*|syncope|Synkope|omvallen|valpartij\w*|chute\w*|Sturz\w*|upad\w*)\b', score: 0.45}
+      - {name: medication, regex: '\b(?:insulin\w*|metformin\w*|aspirin\w*|ibuprofen\w*|paracetamol|acetaminophen|morphin\w*|morfin\w*|oxycod\w*|tramadol|hydromorphon\w*|fentanyl|codein\w*|antidepress\w*|sertralin\w*|fluoxetin\w*|citalopram|escitalopram|venlafaxin\w*|lithium|quetiapin\w*|olanzapin\w*|risperidon\w*|methylphenidat\w*|Ritalin|methotrexat\w*|anticoag\w*|apixaban|rivaroxaban|edoxaban|dabigatran|warfarin\w*|acenocoumarol|statin\w*|atorvastatin\w*|simvastatin\w*|prednis\w*|cortison\w*|dexamethason\w*|levothyrox\w*|L-Thyrox\w*|salbutamol|amoxicillin\w*|antibiotic\w*|antibiotique\w*|Antibiotik\w*|antibiotica|antybiotyk\w*|antiretrovir\w*|PrEP|(?-i:ART)|chemo)\b', score: 0.5}
+  - name: health_more
+    entity: HEALTH
+    patterns:
+      - {name: compounds, regex: '\b\w*(?:carcinoo?m|karzinom|krebs|kanker|schmerz(?:en)?|pijn|ziekte|aandoening|stoornis|erkrankung|krankheit|infarkt|insuffizienz|störung|fractuur|fraktur|operation|operatie|-OP)\w*\b', score: 0.45}
+      - {name: terms, regex: '\b(?:d[ée]press\w*|osteopor\w*|osteopen\w*|pneumoni\w*|embol\w*|zator\w*|tętniak\w*|aneurysm\w*|anévrisme\w*|azoosperm\w*|oligosperm\w*|HPV|VIH|VHB|VHC|HBV|HCV|STI|STD|IST|SOA|chlamydia\w*|gonor\w*|gonocoque|syphil\w*|suicid\w*|samobój\w*|suïcid\w*|cauchemar\w*|nightmare\w*|Albtr\w*|nachtmerrie\w*|hypervigilan\w*|contracept\w*|Verhütung\w*|anticoncept\w*|antykoncep\w*|kinderwens|Kinderwunsch|désir d''enfant|fertili\w*|Fertilität|płodnoś\w*|zaburzeni\w*|objaw\w*|symptom\w*|sympt[ôo]me\w*|klacht\w*|Beschwerde\w*|dolegliwoś\w*|bradykines\w*|hypomimi\w*|dysmetri\w*|ataxi\w*|ataksj\w*|afazj\w*|aphasi\w*|Romberg|krankheitsbedingt|DNACPR|DNR|nil by mouth|à jeun|nüchtern|nuchter|na czczo|diagnos\w*|Diagnose\w*|diagnoz\w*|prognos\w*|rokowani\w*|biops\w*|Biopsie|biopsj\w*|histolog\w*|histopatholog\w*|patholog\w*|MRI|IRM|MRT|CT[- ]scan|scanner|TK\b|RTG|X-ray|radiograph\w*|Röntgen\w*|röntgen\w*|echograph\w*|ultrasound|Ultraschall|echografie|USG|EEG|ECG|EKG|Holter\w*|OGD|endoscop\w*|Endoskop\w*|endoskop\w*|colonoscop\w*|Koloskopie|kolonoskopi\w*)\b', score: 0.45}
+      - {name: vitals2, regex: '\b(?:RR|TA|BD|NEWS2?|SpO2|temp\.?|Temperatur|température|temperatuur|temperatura|Gewicht|poids|gewicht|waga|weight)\b\s*[:=]?\s*(?:liggend\s|couché\s|sitting\s)?\d[\d.,/]*\s*(?:kg|mmHg|°C|%|/min)?', score: 0.5}
+      - {name: bp, regex: '\b\d{2,3}/\d{2,3}\s?mmHg\b', score: 0.5}
+  - name: genetic
+    entity: GENETIC
+    patterns: [{name: terms, regex: '\b(?:genetic\w*|génétique\w*|genetisch\w*|genetyczn\w*|gene test|Gentest|DNA[- ]test\w*|test ADN|mutation\w*|Mutation\w*|mutatie\w*|mutacj\w*|pathogenic variant|variant pathogène|pathogene Variante|pathogene variant|wariant patogenn\w*|carrier|porteu(?:r|se)|Träger(?:in)?|draagster|drager|nosiciel\w*|BRCA[12]?|HFE|FMR1|CFTR|HLA-[A-Z]\*?[\d:]+|CYP\d\w+\s?\*\d+/\*\d+|premutati\w*|microdeletion\w*|microdélétion\w*|Mikrodeletion\w*|AZF[abc]?\w*|erblich\w*|hereditary|héréditaire|erfelijk\w*|dziedzicz\w*|familial\w*|familiär\w*|rodzinn\w* (?:hipercholesterolemi\w*|choroba)|hemochromat\w*|haemochromat\w*|hémochromatose|Hämochromatose|karyotyp\w*|Chorea Huntington|Huntington\w*)\b', score: 0.5}]
+  - name: biometric
+    entity: BIOMETRIC
+    patterns: [{name: terms, regex: '\b(?:fingerprint\w*|empreinte\w*(?: digitale\w*)?|Fingerabdr\w*|vingerafdruk\w*|odcisk\w* palc\w*|linii papilarnych|face (?:template|recognition|ID|match\w*|scan)|facial (?:recognition|template|comparison|biometric\w*)|comparaison faciale|reconnaissance faciale|Gesichtserkennung|Gesichts-?Template\w*|gezichtsherkenning|gezichtssjabloon|rozpoznawani\w* twarzy|szablon\w* twarzy|wzorz?ec twarzy|iris (?:scan|template)|Iris-?Scan|retina|palm vein|Handvenen\w*|biometri\w*|Biometrie|biometryczn\w*|Windows Hello|Face-?Login|voice ?print|empreinte vocale|Stimmabdruck)\b', score: 0.5}]
+  - name: religion
+    entity: RELIGION_BELIEF
+    patterns: [{name: terms, regex: '\b(?:muslim\w*|musulman\w*|moslim\w*|muzułma\w*|islam\w*|jewish|juif|juive|jüdisch\w*|joods\w*|żydowsk\w*|orthodox\w*|catholi\w*|katholi\w*|katoli\w*|protestant\w*|evangeli\w*|ewangeli\w*|Jehova\w*|Jéhovah|hindu\w*|sikh\w*|buddhis\w*|bouddhis\w*|boeddhis\w*|buddyj\w*|atheis\w*|athée|Atheist\w*|ateist\w*|ramadan|ramadhan|Ramadan|Eid|Aïd|Umrah|Hajj|Yom Kippur|Yom Kippour|Jom Kippur|Souccot|Sukkot|Pessa(?:ch|h)|Pesach|Rosh Hashana\w*|Shabbat|sabbat\w*|Sabbat|szabat|kosher|casher|koscher|koosjer|koszern\w*|halal|hidjab|hijab|Kopftuch|hoofddoek|chusta|kippa|Kippa|turban|tulband|church|église|Kirche|kerk|kości\w*|mosque|mosquée|Moschee|moskee|meczet\w*|synagog\w*|prayer\w*|prière\w*|Gebet\w*|gebed\w*|modlitw\w*|pilgrimage|pèlerinage|Pilgerreise|bedevaart|pielgrzym\w*|priest|prêtre|Priester|priester|ksiądz\w*|imam|rabbi\w*|rabbin\w*|chevra kadisha|religio\w*|religij\w*|Kirchensteuer|Konfession|confessio\w*|wyznani\w*)\b', score: 0.5}]
+  - name: trade_union
+    entity: TRADE_UNION
+    patterns: [{name: terms, regex: '\b(?:trade union\w*|labour union|union (?:rep\w*|member\w*|subscription\w*|dues|official|steward)|shop steward|syndica\w*|syndicat\w*|Gewerkschaft\w*|Betriebsrat\w*|Tarifkommission|vakbond\w*|vakbeweging|syndicale delegatie|syndicaal\w*|związ\w* zawodow\w*|związkow\w*|(?-i:Unite|UNITE(?:-REP)?|Unison|UNISON|GMB|PROSPECT|RCN|BMA|NEU|SIPTU|Fórsa|ver\.di|IG Metall|IG BCE|GEW|DGB|ABVV|FGTB|ACV|CSC|ACLVB|CGSLB|FNV|CNV|CGT|CFDT|CFE-CGC|UNSA|Solidarność|NSZZ|OPZZ|ZNP))\b', score: 0.5}]
+  - name: political
+    entity: POLITICAL_OPINION
+    patterns: [{name: terms, regex: '\b(?:political part\w*|parti politique|politische Partei|politieke partij|parti\w* polityczn\w*|councillor|conseill\w* (?:communal\w*|municipal\w*|régional\w*)|Stadtrat\w*|Gemeinderat\w*|Ratsmitglied|gemeenteraadslid|gemeenteraad|schepen\w*|radn\w*|poseł\w*|member of parliament|MP\b|député\w*|Abgeordnete\w*|Kandidat\w* der|Listenkandidat\w*|candidate for|candidat\w* (?:aux|pour)|kandydat\w*|militant\w* (?:d|du|de|van|der|des)\b|canvass\w*|Wahlkampf\w*|election campaign|campagne électorale|verkiezingscampagne|kampani\w* wyborcz\w*|manifestations? contre|Kundgebung\w*|protest\w* (?:against|tegen|gegen|przeciw)|(?-i:Labour Party|Conservative Party|Tory|Tories|Lib Dems?|Liberal Democrats?|Green Party|Reform UK|SNP|Sinn Féin|Fianna Fáil|Fine Gael|SPD|CDU|CSU|FDP|AfD|Grünen|Die Linke|BSW|PTB|PVDA|N-VA|Vlaams Belang|Groen|Vooruit|Ecolo|Les Engagés|CD&V|Open VLD|VVD|PVV|D66|GroenLinks|PvdA|CDA|BBB|JA21|Rassemblement national|La France insoumise|LFI|Les Républicains|PiS|Platforma Obywatelska|Koalicja Obywatelska|Lewica|Konfederacja|PSL|Polska 2050))\b', score: 0.5}]
+  - name: sex_life
+    entity: SEX_LIFE_ORIENTATION
+    patterns: [{name: terms, regex: '\b(?:sexual orientation|orientation sexuelle|sexuelle Orientierung|seksuele geaardheid|orientacj\w* seksualn\w*|gay|lesbian\w*|lesbienne\w*|lesbisch\w*|lesbijk\w*|homosexu\w*|homoseksu\w*|homo|bisexu\w*|biseksu\w*|transgender|trans(?:sexu|seksu)\w*|queer|LGBT\w*|same-sex|même sexe|gleichgeschlechtlich\w*|zelfde geslacht|sexual (?:partner\w*|health|activity|intercourse)|santé sexuelle|sexuelle Gesundheit|seksuele gezondheid|zdrowi\w* seksualn\w*|rapports? (?:sexuels?|non protégés)|kontakt\w* seksualn\w*|unprotected sex|ungeschützte\w* Geschlechtsverkehr|onbeschermde seks|partnerk\w*|(?:votre|sa|ma|son|mon) compagn(?:e|on)|my (?:husband|wife)|mon (?:mari|époux)|ma (?:femme|épouse)|son mari|sa femme|mijn (?:man|vrouw)|zijn man|haar vrouw|mein(?:e)? (?:Mann|Frau|Ehemann|Ehefrau)|mój mąż|moja żona)\b', score: 0.45}]
+  - name: ethnic
+    entity: ETHNIC_ORIGIN
+    patterns: [{name: terms, regex: '\b(?:ethnic\w*|ethnique\w*|ethnisch\w*|etniczn\w*|etniciteit|race|racial|raciale|Rasse|ras\b|rasow\w*|migration background|migratieachtergrond|Migrationshintergrund|origine (?:ethnique|\p{L}+)|Herkunft|afkomst|pochodzeni\w*|heritage|achtergrond|Caucasian|caucasien\w*|kaukasisch\w*|kaukask\w*|weiß/europäisch|white british|black british|Black African|Asian British|mixed (?:race|ethnicity)|Roma|Sinti|Hindoestan\w*|Indo\b|Turks\w*|Marokkaans\w*|Turkse|aszkenazyjsk\w*|ashkenaz\w*)\b', score: 0.45}]
+  - name: criminal
+    entity: CRIMINAL_OFFENCE
+    patterns: [{name: terms, regex: '\b(?:criminal record\w*|casier judiciaire|bulletin n°\s?\d|extrait de casier|Führungszeugnis\w*|Strafregister\w*|strafregister\w*|uittreksel\w* uit het strafregister|VOG|verklaring omtrent het gedrag|zaświadczeni\w* o niekaralności|KRK|niekaraln\w*|karaln\w*|conviction\w*|convicted|condamn\w*|Verurteilung\w*|verurteilt|veroordeling\w*|veroordeeld|skazan\w*|wyrok\w*|police (?:investigation|caution|report)|enquête (?:de police|pénale)|Ermittlungsverfahren|strafrechtlich\w*|politieonderzoek|dochodzeni\w*|śledztw\w*|policj\w*|Strafanzeige|aangifte|zawiadomieni\w* o przestępstw\w*|dépôt de plainte|plainte pour|porter plainte|offence\w*|offense\w*|infraction\w*|Straftat\w*|strafbaar feit|przestępstw\w*|wykroczeni\w*|fraud\w*|fraude\w*|Betrug\w*|oszustw\w*|escroquerie\w*|faux et usage de faux|theft|vol\b|Diebstahl|diefstal|kradzież\w*|kradzie\w*|assault|agression|Körperverletzung|mishandeling|pobici\w*|drink[- ]driving|conduite en état d''ivresse|Trunkenheit\w*|rijden onder invloed|po użyciu alkoholu|nietrzeźw\w*|speeding|excès de vitesse|Geschwindigkeitsüberschreitung|snelheidsovertreding|przekroczeni\w* prędkości|mandat\w*|endorsement\w*|points on (?:his|her|their) licen[cs]e|homicide\w*|manslaughter|Totschlag|doodslag|zabójstw\w*|informaticabedrog|Computerbetrug|cybercrim\w*|probation|sursis|Bewährung|voorwaardelijk\w*|zawieszeni\w*|postępowani\w* (?:karn\w*|umorzon\w*))\b', score: 0.5}]

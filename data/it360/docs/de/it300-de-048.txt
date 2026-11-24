@@ -1,0 +1,14 @@
+Kurzbericht HRH-2026-77 – Datenabfluss Notebook Kevin Trefz
+An: Tanja Loibl, Syndikusrechtsanwältin, Kauzried Lebensmittel AG · 20.11.2026
+
+Anlass: Kevin Trefz, Lohnbuchhalter, ausgeschieden zum 30.10.2026; DLP-Alarm wegen USB-Kopien. Er erklärte schriftlich, nur private Hochzeitsunterlagen auf einen Stick kopiert zu haben, den er mit seinem Ehemann Jonas nutzt.
+
+Beweismittel: Notebook MSJ5JYQ, Anmeldung KAUZRIED\trefzk; DHCP-Lease 172.24.24.83 / D8-71-DC-28-EE-5D. USB-Historie: Stick mit Volume-Label HOCHZEIT_KEVIN_JONAS, Seriennummer SN-8476-HYEZ.
+
+Befund: 26.–29.10. wurden 4,1 GB auf diesen Stick kopiert. Neben dem Ordner „Hochzeit“ (nur Dateinamen geprüft, Inhalte nicht geöffnet) enthielt die Kopie Lohnexporte 2025–2026. Die Erklärung deckt also nur einen Teil der Kopien ab.
+
+Privater Ordner: von der Auswertung ausgenommen. Die Hochzeit wird nur erwähnt, weil sie seine eigene Erklärung und das Label des Sticks betrifft.
+
+Die rechtliche Bewertung liegt bei Tanja Loibl. Empfehlung: Herausgabe des Sticks und schriftliche Löschbestätigung für die Lohndaten verlangen. Das Image wird bis 31.05.2027 aufbewahrt.
+
+Steffen Heuermann, Leiter Incident Response, Heckenrosenhorst IT-Sicherheit GmbH

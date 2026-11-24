@@ -1,0 +1,30 @@
+Cyberbezpieczny Październik 2026 – newsletter bezpieczeństwa nr 10
+Od: Zespół Bezpieczeństwa Szpakowo Usługi IT S.A. · Do: wszyscy pracownicy · 01.10.2026
+
+Cześć!
+Październik to Europejski Miesiąc Cyberbezpieczeństwa, który co roku koordynuje ENISA. U nas to dobry moment, żeby przyjrzeć się trzem atakom, które w ostatnich tygodniach widzimy najczęściej – zarówno u siebie, jak i u klientów, których obsługujemy.
+
+1. Quishing, czyli phishing w kodzie QR
+Na parkingach pod biurowcami pojawiają się fałszywe „wezwania do zapłaty za postój” z kodem QR. Podobne kody trafiają też do nas na fakturach w PDF. Kod prowadzi na stronę łudząco podobną do bramki płatności albo do logowania Microsoft 365.
+Co robić: zanim cokolwiek wpiszesz, sprawdź pełny adres strony, który pokazuje aparat. Nie loguj się do konta służbowego przez kod QR z niezamówionej wiadomości. Podejrzany dokument zgłoś, zamiast go „sprawdzać”.
+
+2. Deepfake głosowy „przełożonego”
+Przestępcy potrafią na podstawie kilku nagrań z webinarów podrobić głos menedżera. Typowy scenariusz: pilny telefon, presja czasu, prośba o przelew, reset hasła lub wyłączenie MFA „bo klient czeka”.
+Co robić: rozłącz się i oddzwoń na numer z książki adresowej Teams, nie na ten, z którego dzwoniono. Żadna prośba o hasło lub kod MFA nie jest prawdziwa – nikt z nas o nie nie prosi.
+
+3. Dane wrażliwe klientów
+Jako MSP mamy dostęp do systemów kadrowych i medycznych klientów. Przypominamy zasadę z polityki ochrony informacji: dane o zdrowiu, zaświadczenia o niekaralności i listy numerów PESEL nigdy nie są wysyłane zwykłym e-mailem ani przez komunikator. Używaj wyłącznie narzędzia do szyfrowanego przekazywania plików, z linkiem ważnym maksymalnie 7 dni. Jeżeli klient sam przyśle takie dane otwartym tekstem – nie przesyłaj ich dalej, zgłoś to do nas, a my pomożemy ustalić, czy doszło do naruszenia.
+
+Jak zgłaszać?
+– przycisk „Zgłoś phishing” w Outlooku,
+– e-mail: security@szpakowo-uslugi.pl,
+– podejrzane SMS-y przekaż bezpłatnie na numer 8080 – trafią do CERT Polska.
+Każde zgłoszenie się liczy, także to „na wszelki wypadek”.
+
+Quiz i losowanie
+W intranecie czeka krótki quiz z dziesięcioma pytaniami o powyższych atakach. Wśród osób z kompletem poprawnych odpowiedzi rozlosujemy pięć kluczy sprzętowych FIDO2 i wejściówki na konferencję branżową. Losowanie 3 listopada.
+
+Na koniec przypomnienie: 15-minutowe szkolenie e-learningowe „Bezpieczna praca z danymi klientów” trzeba ukończyć do 31.10.2026.
+
+Bezpiecznego października!
+Zespół Bezpieczeństwa Szpakowo Usługi IT

@@ -1,0 +1,47 @@
+#release-incident – Eendwaard Voeding Slack
+vrijdag 16 oktober 2026
+
+Rob Vromans (@rvromans69 · Klantenservicemedewerker)  15:12
+Klanten zien hun bestelhistorie niet meer sinds de release van 14:00. Ik heb er nu 11 aan de lijn of in de chat gehad, allemaal "Er is iets misgegaan" op Mijn Bestellingen. Kan iemand kijken?
+
+Henk Fluitman (@hfluitman96 · HR-adviseur)  15:18
+Bij ons hetzelfde verhaal aan de andere kant: de HR-selfservice login geeft een 500. Collega's kunnen hun verlofsaldo en loonstroken niet inzien. Hangt dat samen?
+
+Jesse Meekma (@jmeekma15 · Netwerkbeheerder)  15:26
+Ja, zelfde oorzaak. De release bevatte migratie 2026_10_16_01 die de tabel order_history heeft gesplitst en ook de sessietabel van het portaal heeft omgegooid. De HR-selfservice gebruikt dezelfde SSO-sessies, vandaar.
+Code terugzetten kan ik zelf, maar de migratie moet netjes worden teruggedraaid op de database en dat is normaal het werk van @jhuisinga31.
+
+Jesse Meekma  15:27
+Judith is ziek thuis, dus zij doet vandaag niks. Alleen voor echte noodgevallen: 06-54787931. Graag niet zomaar bellen.
+
+Henk Fluitman  15:31
+Helder. Wanneer kan het dan wel? Maandag is salarisrun-voorbereiding, liefst niet dan pas.
+
+Jesse Meekma  15:35
+Zaterdag kan ik, zondag niet: geen zondagswerk vanwege geloofsovertuiging, dat staat ook zo in het roosterafspraken-document. Anders wordt het maandag 07:00, vóór de eerste klanten.
+Voor zaterdag heb ik wel een tweede paar ogen nodig: remote support van de leverancier van het portaal, die hebben weekendpiket.
+
+Rob Vromans  15:38
+Zaterdag lijkt me beter dan maandag, het is nu de drukste week met de herfstacties. Ik kan klanten vandaag nog laten weten dat het morgenochtend wordt opgelost.
+
+Judith Huisinga (@jhuisinga31 · Databasebeheerder)  15:44
+Even kort meegelezen. Het down-script van de migratie staat in de repo, map migrations/rollback. Eerst een snapshot van de productiedatabase maken. Verder laat ik het aan jullie 🤒
+
+Jesse Meekma  15:46
+Dank je Judith, beterschap. Dan zo:
+
+📌 Plan
+1. Za 17 okt 09:00: snapshot prod-DB, daarna rollback migratie 2026_10_16_01 en terugzetten release 4.18 → 4.17 door @jmeekma15, met remote support van de leverancier.
+2. Na afloop test ik bestelhistorie en HR-login; resultaat hier in de thread uiterlijk 11:00.
+3. @rvromans69 zet vanavond een statusbericht op de website en in de klantenservice-chat.
+4. @hfluitman96 mailt de medewerkers over de HR-selfservice.
+Bereikbaar in het weekend via +31 20 225 9747 (doorgeschakeld naar mijn mobiel).
+
+Rob Vromans  15:49
+Statusbericht staat om 17:00 online 👍
+
+Henk Fluitman  15:50
+👍 mail gaat er straks uit.
+
+Judith Huisinga  15:52
+👍

@@ -1,0 +1,36 @@
+INFORMACJA O PRZETWARZANIU DANYCH OSOBOWYCH PACJENTÓW – KLINIKA KARDIOLOGII JODŁÓW
+(art. 13 RODO)
+ul. Garncarska 99/60, Katowice · tel. +48 22 919 24 02
+
+1. Administrator danych
+Administratorem Pani/Pana danych osobowych jest Klinika Kardiologii Jodłów. Wyznaczyliśmy Inspektora Ochrony Danych, z którym można się kontaktować pod adresem iod@jodlowklinika.pl lub pisemnie na adres Kliniki, z dopiskiem „IOD”.
+
+2. Cele i podstawy prawne przetwarzania
+• udzielanie świadczeń zdrowotnych oraz prowadzenie dokumentacji medycznej – art. 6 ust. 1 lit. c oraz art. 9 ust. 2 lit. h RODO w związku z ustawą o prawach pacjenta i Rzeczniku Praw Pacjenta oraz ustawą o działalności leczniczej;
+• zdalne monitorowanie EKG (telemonitoring) – art. 6 ust. 1 lit. b RODO (umowa o świadczenie usługi) oraz art. 9 ust. 2 lit. h RODO;
+• obsługa portalu pacjenta, w tym rejestrowanie logowań – art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes: bezpieczeństwo systemów);
+• rozliczenia z płatnikiem i dochodzenie roszczeń – art. 6 ust. 1 lit. c i f RODO.
+
+3. Kategorie danych
+Przetwarzamy dane identyfikacyjne i kontaktowe, dane dotyczące zdrowia, dane pochodzące z urządzeń monitorujących (zapisy EKG, czas i jakość transmisji) oraz dane techniczne logowania do portalu.
+
+4. Okres przechowywania
+• dokumentacja medyczna – 20 lat od końca roku kalendarzowego, w którym dokonano ostatniego wpisu (art. 29 ustawy o prawach pacjenta);
+• zapisy EKG z telemonitoringu – 10 lat;
+• logi portalu – 12 miesięcy.
+
+5. Odbiorcy danych
+Narodowy Fundusz Zdrowia, laboratoria współpracujące, podmioty kontynuujące leczenie na podstawie skierowania, dostawcy usług informatycznych i operator telemonitoringu – na podstawie umów powierzenia przetwarzania. Nie przekazujemy danych poza Europejski Obszar Gospodarczy.
+
+6. Pani/Pana prawa
+Ma Pani/Pan prawo dostępu do danych, uzyskania kopii dokumentacji medycznej (pierwsza kopia bezpłatna), sprostowania danych, ograniczenia przetwarzania, a w zakresie danych przetwarzanych na podstawie prawnie uzasadnionego interesu – sprzeciwu. Przysługuje również prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych.
+W 2025 r. Klinika zrealizowała 1 284 wnioski o udostępnienie kopii dokumentacji, z czego 96% w terminie 7 dni.
+
+7. Obowiązek podania danych
+Podanie danych jest wymogiem ustawowym w zakresie niezbędnym do udzielenia świadczenia i prowadzenia dokumentacji. W przypadku telemonitoringu i portalu – dobrowolne, lecz niezbędne do korzystania z usługi.
+
+8. Zautomatyzowane decyzje
+Alerty z telemonitoringu są zawsze weryfikowane przez personel medyczny; nie podejmujemy decyzji wyłącznie w sposób zautomatyzowany.
+
+Wersja 4.0 – obowiązuje od 01.09.2026
+Zarząd Kliniki Kardiologii Jodłów / Inspektor Ochrony Danych

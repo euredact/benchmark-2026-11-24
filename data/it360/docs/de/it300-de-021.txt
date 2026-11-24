@@ -1,0 +1,51 @@
+Kauzmarsch Software GmbH
+Reiherring 63 · 4071 Linz · Österreich
+UID: ATU21366741 · Firmenbuch: FN 119353w, Landesgericht Linz
+
+Herrn
+Werner Gangl
+Schlehenallee 95
+9076 Klagenfurt
+
+RECHNUNG RE-2026-104877
+Rechnungsdatum: 03.11.2026
+Leistungsdatum/-zeitraum: 30.10.2026 bis 02.11.2027
+Kundennummer: U70301063
+
+Pos. | Bezeichnung | Menge | Betrag
+1 | Familienplan 12 Monate (bis 02.11.2027, bis zu 6 Mitglieder inkl.) | 1 | 59,99 €
+2 | FIDO2-Sicherheitsschlüssel (USB-C/NFC) | 2 Stück | 49,00 €
+3 | 2FA-Zurücksetzung mit Video-Ident | 1 | 29,00 €
+
+Summe netto: 137,99 €
+zzgl. 20 % USt: 27,60 €
+Rechnungsbetrag brutto: 165,59 €
+
+Zahlung: Kreditkarte Mastercard **** **** **** 9405, belastet am 03.11.2026
+Zahlungsreferenz: PAY-7Q2K-551903
+
+Hinweis zur 2FA-Zurücksetzung
+Die Identität des Kontoinhabers wurde am 30.10.2026 per Video-Ident geprüft. Vorgelegtes Dokument: Führerschein, Nr. 71414935, Ergebnis: übereinstimmend. Entfernt wurde ausschließlich der zweite Faktor (Authenticator-App). Die Inhalte Ihres Tresors sind weiterhin Ende-zu-Ende-verschlüsselt; Kauzmarsch hatte und hat keinen Zugriff darauf, die Entschlüsselung erfolgte ausschließlich mit Ihrem Master-Passwort. Das Ausweisbild wurde unmittelbar nach der Prüfung gelöscht, gespeichert bleiben nur Dokumentnummer und Prüfergebnis.
+
+Rechnung gemäß § 11 UStG. Leistungserbringer: Kauzmarsch Software GmbH, Linz.
+
+-----------------------------------------------------------------
+
+Sehr geehrter Herr Gangl,
+
+danke, dass Sie auf den Familienplan umgestiegen sind. Als Ihr Customer-Success-Manager begleite ich Sie bei der Einrichtung. Damit Sie gleich loslegen können, drei kurze Schritte:
+
+1. Familienmitglied einladen: Unter „Familie > Mitglied hinzufügen“ die E-Mail-Adresse Ihrer Mutter eingeben. Frau Edith Gangl erhält eine Einladung, legt ihr eigenes Master-Passwort fest und hat danach einen eigenen, getrennten Tresor. Geteilte Ordner sind nur sichtbar, wenn Sie sie ausdrücklich freigeben.
+2. FIDO2-Schlüssel registrieren: „Einstellungen > Sicherheit > Zwei-Faktor > Sicherheitsschlüssel“. Bitte beide Schlüssel anmelden und einen davon an einem sicheren Ort zu Hause aufbewahren – so stehen Sie bei Verlust nicht wieder ohne zweiten Faktor da. Neue Wiederherstellungscodes bitte ausdrucken, nicht am Handy speichern.
+3. Notfallzugriff: Unter „Notfallzugriff“ können Sie Frau Gangl als Vertrauensperson mit einer Wartezeit (z. B. 7 Tage) hinterlegen.
+
+Betrag dankend erhalten – kein Zahlungsbedarf.
+Ihr Familienplan verlängert sich am 03.11.2027; Sie werden 30 Tage vorher per E-Mail erinnert.
+
+Fragen? support@kauzmarsch-software.at oder +43 1 2701641 (Mo–Fr 8–17 Uhr).
+
+Freundliche Grüße aus Linz
+
+Yannick Ueltschi
+Customer-Success-Manager
+Kauzmarsch Software GmbH

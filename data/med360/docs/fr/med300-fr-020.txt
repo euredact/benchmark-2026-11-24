@@ -1,0 +1,32 @@
+Ronceières Télésanté SAS – Plateforme de télésurveillance cardiaque
+RAPPORT DE TRANSMISSION – MONITEUR CARDIAQUE IMPLANTABLE – ALERTE
+13/10/2026 09:35
+
+Destinataire : Dr Grégory Boisgontier, cardiologue, Clinique cardiologique Tilleuly (centre prescripteur)
+Patient : Clément Dalbin, 32 ans – compte clement.dalbin – https://portal.tilleulyclinique.fr/profile/clement.dalbin
+Moniteur implantable n° SN1270WVUP (implanté en juin 2026) – boîtier de chevet n° HL58-74343
+
+ÉVÉNEMENT
+09/10/2026 03:12 : tachycardie ventriculaire polymorphe de 14 s, arrêt spontané. Patient endormi ; palpitations ressenties au réveil, pas de syncope.
+
+CONTEXTE
+Syncope inexpliquée en 2025 ; aspect de Brugada de type 2 à l'ECG, test à l'ajmaline en attente. Père décédé subitement à 41 ans. Ascendance maternelle vietnamienne notée au dossier (syndrome de Brugada plus fréquent chez les hommes d'Asie du Sud-Est).
+
+POURQUOI CE SIGNALEMENT MAINTENANT
+Le boîtier était hors ligne depuis le 30/09. Après le re-appairage du 12/10 à 18:40, l'arriéré de 12 jours conservé en mémoire a été téléversé dans la nuit. La plateforme classe les événements de plus de 72 h en « historique », sans alerte rouge : la TV est donc arrivée dans la file de tri du matin et n'a été lue qu'à 08:50 le 13/10. Je signale cette règle comme une faille du protocole pour les arriérés (ticket ouvert auprès du responsable médical).
+
+ESCALADE
+- 13/10 09:20 : appel au Dr Boisgontier, qui demande une hospitalisation le jour même.
+- 09:28 : appel du patient ; consigne de ne pas conduire. Son épouse, Aurélie Dalbin, l'amène à Tilleuly en fin de matinée.
+- Si le patient ne se présente pas, prévenir le cardiologue d'astreinte.
+
+JOURNAL SUPPORT
+30/09 : boîtier hors ligne après changement de box internet.
+12/10 18:40 : re-appairage par Élise Gualbert, conseillère support patients (elise.gualbert). MAC du boîtier 88-6A-CF-75-CE-3C, IP du domicile 150.140.242.126.
+Le patient avait écrit son mot de passe Wi-Fi dans le ticket (mN9M********, masqué ici) : supprimé du ticket ce jour, patient invité à le changer.
+
+SUITE
+Hospitalisation le 13/10 à Tilleuly pour test à l'ajmaline et discussion d'un défibrillateur implantable. Télésurveillance maintenue.
+
+Céline Gayraud, infirmière de télésurveillance (celine.gayraud) – https://ronceieres-sante.fr/team/c-gayraud
+Accusé de réception : gboisgontier10, 13/10/2026 09:41

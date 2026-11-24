@@ -1,0 +1,62 @@
+Ticket SUP-2026-18342 · Priorité : haute · Ouvert le 14/10/2026 à 09:42
+Marchand : Cèdreterre Mobilier SARL (compte marchand M-46031)
+Résumé : Webhooks invoice.payment_succeeded en échec 401 depuis le 13/10 — et NIR et données sensibles dans metadata
+
+Bonjour,
+
+Depuis le 13/10 à 18:05, toutes les livraisons de l'événement invoice.payment_succeeded vers votre endpoint sont rejetées avec un HTTP 401 Unauthorized. 37 événements sont en file de rejeu. D'après vos journaux d'accès que nous avons reçus hier, le mot de passe Basic Auth de l'endpoint a été changé de votre côté sans mise à jour dans la console Abeillefontaine.
+
+1) Configuration actuelle du webhook (extrait, telle qu'enregistrée chez nous)
+
+webhook:
+  id: whk_7Fq2mC
+  url: https://paiements.cedreterre-mobilier.fr/hooks/abonnements
+  resolved_ip: 6.62.87.228
+  events: [invoice.payment_succeeded, invoice.payment_failed]
+  auth:
+    type: basic
+    username: abeille_hooks
+    password: "Paris#922"
+  # Doc intégration §4.3 : metadata ne doit pas contenir de données de santé
+  # ni de convictions religieuses (art. 9 RGPD), ni de numéro de sécurité sociale.
+
+2) Payload d'une livraison en échec (evt_01JA9X4K, 13/10 à 18:07)
+
+{
+  "event": "invoice.payment_succeeded",
+  "created": "2026-10-13T18:07:12+02:00",
+  "data": {
+    "invoice": "INV-2026-0091877",
+    "product": "Option confort lit médicalisé (non remboursée)",
+    "amount": "19,90 €",
+    "customer": {
+      "id": "ACC-0438697",
+      "name": "Jean-Luc Vrignaud",
+      "email": "jean-lucv89@post.example",
+      "checkout_ip": "32.171.186.175"
+    },
+    "metadata": {
+      "nir": "174072427418986",
+      "delivery_notes": "suite à son opération de la hanche, monter au 1er ; pas de livraison le samedi (shabbat)"
+    }
+  }
+}
+
+3) Constat
+
+Votre checkout recopie dans metadata deux champs qui n'ont rien à y faire :
+- nir : le NIR saisi pour le dossier Assurance maladie (LPP) que vous facturez vous-mêmes. Il n'est pas nécessaire au paiement de l'option confort, la plateforme n'en a aucun besoin et il ne doit pas quitter votre système de facturation Assurance maladie.
+- delivery_notes : champ libre qui contient ici des informations de santé et de religion du client, en contradiction avec §4.3.
+
+4) Demandes
+
+Demande 1 : mettre à jour le mot de passe Basic Auth soit dans la console (Paramètres > Webhooks > whk_7Fq2mC), soit en rétablissant l'ancien sur votre endpoint. Dès votre confirmation, nous rejouons les 37 événements.
+
+Demande 2 : ne plus mapper nir ni le champ libre des instructions de livraison dans metadata. De notre côté, Abeillefontaine Logiciels SARL purge les événements déjà stockés contenant ces champs et les masque dans les rejeux.
+
+Statut : En attente marchand
+Prochaine étape : rejeu des 37 événements après correction de l'authentification, sans les champs nir et delivery_notes. Purge des événements stockés confirmée sous 48 h.
+
+Cordialement,
+Laurent Nickels
+Ingénieur support — Abeillefontaine Logiciels SARL

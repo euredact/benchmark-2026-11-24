@@ -1,0 +1,18 @@
+Nachtrag Nr. 3 zum Managed-Service-Vertrag MSV-2022-118
+
+Parteien: Taubenaue Hosting AG, Wien, UID ATU31537049 („Auftragnehmer“), und Spechthag Reisen GmbH, Linz, UID ATU98953766 („Auftraggeber“).
+
+§ 1 Laufzeit: verlängert bis 31.12.2028.
+§ 2 Service Level: Verfügbarkeit 99,9 % pro Kalendermonat; Reaktionszeit P1 30 Minuten.
+§ 3 Entgelt: EUR 3.940,00 netto monatlich; Indexanpassung jährlich zum 1. Jänner nach VPI 2020.
+§ 4 Ansprechpartner: Der Auftraggeber benennt einen Ansprechpartner für Störungsmeldungen. Änderungen dieses Vertrags zeichnet die zeichnungsberechtigte Person des Auftraggebers im Vertragsportal.
+
+Kontakte:
+Piotr Miętus, Key-Account-Manager, Taubenaue Hosting AG
+Christian Tröscher, Einkäufer und Prokurist (zeichnungsberechtigt gemäß Firmenbuch), im Portal als Zeichnungsberechtigter hinterlegt
+
+Freigabe im Portal protokolliert durch Benutzer „troescher.christian“.
+
+Alle übrigen Bestimmungen bleiben unverändert. Gültig nach Unterzeichnung durch beide Parteien bis spätestens 30.11.2026.
+
+Für Taubenaue Hosting AG: ______________   Für Spechthag Reisen GmbH: ______________

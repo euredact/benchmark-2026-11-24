@@ -1,0 +1,82 @@
+[1] Notifikation sendt pr. e-mail 26.10.2026 09.14
+Fra: noreply@askedalbredbaand.dk
+Til: mikkel.kronberg24@inbox.example
+Emne: Svar på din anmodning om sletning er sendt til din e-Boks
+
+Hej Mikkel Kronberg
+
+Vi har nu besvaret din anmodning om sletning af personoplysninger (kundenr. KD-04638554). Svaret indeholder personoplysninger, som vi ikke sender med almindelig e-mail, og ligger derfor i din e-Boks under afsender Askedal Bredbånd ApS.
+
+Venlig hilsen
+Kundeservice, Askedal Bredbånd
+
+[2] Brev i e-Boks 26.10.2026
+
+Askedal Bredbånd ApS
+Rosmarinparken 107, 4. tv.
+2860 Søborg
+CVR-nr. 84207977
+
+Mikkel Kronberg
+Torniriskvej 128
+1868 Frederiksberg C
+
+Afgørelse om sletning af personoplysninger (kundenr. KD-04638554)
+
+Hej Mikkel
+
+Tak for din henvendelse af 05.10.2026, hvor du efter opsigelsen af dit bredbånd bad os om at slette alle oplysninger, vi har om dig. Vi har behandlet din anmodning efter databeskyttelsesforordningens artikel 17 og svarer inden for fristen på én måned.
+
+Identifikation
+Din anmodning kom fra den e-mailadresse, der er registreret på din konto, og du oplyste både dit kundenummer og nummeret på din seneste faktura. Det er tilstrækkeligt til, at vi kan være sikre på, at anmodningen kommer fra dig, og vi har derfor ikke bedt dig om yderligere dokumentation.
+
+Kort fortalt
+Vi sletter en stor del af dine oplysninger nu. En mindre del skal vi desværre beholde, fordi der er et udestående beløb på din tidligere konto, som er overgivet til inkasso, og fordi bogføringsloven kræver, at vi gemmer regnskabsmateriale i 5 år. Du får nedenfor en oversigt over, hvad vi beholder og hvorfor, og hvad vi har slettet.
+
+Oplysninger vi beholder
+
+| Oplysning | Indhold | Begrundelse |
+| Navn og adresse | Mikkel Kronberg, Torniriskvej 128, 1868 Frederiksberg C | Nødvendigt for at gøre kravet gældende |
+| Fødselsdato | 31.10.1958 | Entydig identifikation i inkassosagen |
+| CPR-nummer | 311058-2381 (fra kreditvurderingen ved oprettelse) | Entydig identifikation i inkassosagen |
+| Fakturaer og betalinger | Fakturaer og posteringer på kundenr. KD-04638554 | Bogføringsloven, 5 år fra regnskabsårets udløb |
+
+Retsgrundlaget for at beholde oplysningerne er artikel 17, stk. 3, litra e (fastlæggelse og forsvar af retskrav) og artikel 17, stk. 3, litra b sammenholdt med bogføringsloven. CPR-nummeret behandles efter databeskyttelseslovens § 11, fordi det er nødvendigt for entydig identifikation i forbindelse med inddrivelsen.
+
+Det udestående beløb
+Vores faktureringsmedarbejder Brian Rosendal har gennemgået din konto. Kravet består af:
+
+| Post | Beløb ekskl. moms |
+| Abonnement august 2026, restbeløb efter afdrag | 74,93 kr. |
+| Router ikke returneret | 1.867,50 kr. |
+| Gebyr for opsigelse i bindingsperioden | 2.992,50 kr. |
+| Abonnement september 2026 (opsigelsesperiode) | 449,93 kr. |
+| Beløb ekskl. moms | 5.384,86 kr. |
+| Moms 25 % | 1.346,22 kr. |
+| I alt | 6.731,08 kr. |
+
+Når beløbet er betalt, stopper inkassosagen. Du kan betale direkte til os på reg.nr. og kontonr. 5034 2927426484 med kundenummeret som tekst, eller via inkassobureauet. Returnerer du routeren i god stand, krediterer vi routerposten.
+
+Oplysninger vi har slettet
+Følgende er slettet 26.10.2026:
+- Markedsføringssamtykke og nyhedsbrevsdata
+- Trafikdata og opkaldslogs fra dit abonnement
+- Kopien af dit kørekort (nr. 37396414), som butikken tog ved oprettelsen. Den er ikke længere nødvendig, fordi vi har dit CPR-nummer fra kreditvurderingen.
+- En note i vores opkaldslog fra august om en afdragsordning. En medarbejder havde skrevet, at du ikke kunne betale mere om måneden, fordi du betaler tiende til din menighed i Pinsekirken. Den oplysning var ikke nødvendig for vores beslutning om afdragsordningen og burde ikke være noteret. Vi beklager det. Noten er slettet, og vi har mindet vores medarbejdere om, at den slags oplysninger ikke skal skrives i kundenoter.
+
+Hvad sker der bagefter?
+Når kravet er afgjort, sletter vi de resterende oplysninger, så snart bogføringslovens opbevaringsperiode er udløbet. Derefter har vi ingen oplysninger om dig.
+
+Dine rettigheder
+Da vi kun delvist imødekommer din anmodning, skal vi gøre dig opmærksom på, at du kan klage til Datatilsynet via www.datatilsynet.dk (artikel 12, stk. 4). Du kan også få prøvet sagen ved domstolene. Du er altid velkommen til at kontakte os først, hvis du er uenig i vores vurdering.
+
+Opsummering
+Beholdt: navn, adresse, fødselsdato, CPR-nummer og fakturaer, indtil kravet er afgjort og bogføringsperioden er udløbet.
+Slettet: markedsføringsdata, trafikdata og opkaldslogs, kørekortkopi og noten fra opkaldsloggen.
+Udestående: 6.731,08 kr., som kan betales til os eller via inkasso.
+
+Venlig hilsen
+
+Claus Skipper
+kunderådgiver
+Askedal Bredbånd ApS · CVR-nr. 84207977

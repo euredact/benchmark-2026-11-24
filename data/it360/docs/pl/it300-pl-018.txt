@@ -1,0 +1,55 @@
+SPRAWOZDANIE Z BADANIA INFORMATYCZNEGO (DFIR)
+Sprawa nr 2026/DF/031 · Data: 06.11.2026 · Klauzula: POUFNE
+
+Zleceniodawca: Bóbrina Drukarnia sp. z o.o., ul. Chmielna 70, 54-186 Wrocław
+Osoba kontaktowa: Patryk Bigos, pełnomocnik ds. bezpieczeństwa informacji
+Wykonawca: Sarnowo Bezpieczeństwo IT S.A., ul. Bzowa 160, 35-093 Rzeszów
+Badanie przeprowadził: Konrad Dobija, pentester / analityk DFIR
+
+1. Wnioski (streszczenie)
+Badany: Wołodymyr Kłymczuk, koordynator marketingu w Bóbrina Drukarnia sp. z o.o..
+1) Na przydzielonym mu laptopie służbowym znajdowały się pirackie kopie 37 filmów oraz scrackowany pakiet graficzny z generatorem kluczy (łącznie 214 GB).
+2) Z laptopa w okresie 05.10–26.10.2026 udostępniano te pliki innym użytkownikom sieci BitTorrent.
+3) Aktywność przypisano kontu klymczukw. Nie stwierdzono śladów korzystania z urządzenia przez inne osoby.
+Ustalenia mogą wskazywać na czyn z art. 116 ustawy o prawie autorskim i prawach pokrewnych; ocena prawna należy do organów ścigania.
+
+2. Zakres i podstawa
+Zlecenie z 26.10.2026 (umowa ramowa 0187/2026). Powód: zawiadomienia o naruszeniu praw autorskich przekazane przez Orange Polska dla ruchu z publicznego adresu firmy 84.228.71.66; system NAC przypisał ruch do laptopa pracownika. Zakres: obecność nielegalnych treści i oprogramowania, aktywność P2P. Poza zakresem: prywatna korespondencja i dane niezwiązane z celem badania.
+
+3. Przekazanie dowodu (łańcuch dowodowy)
+27.10.2026, 08:20, parking firmowy przy ul. Chmielna 70. Patryk Bigos (wnioskujący w formularzu: bigosp) odebrał od pracownika laptop Lenovo ThinkPad T14, nr seryjny PB939XY, przy pojeździe o numerze rejestracyjnym KR 77006. Pracownik okazał paszport nr WE8009827. Urządzenie umieszczono w torbie dowodowej nr 0044127, plombę nr 0044128. Torbę przekazano wykonawcy 27.10.2026 o 13:05; plomba nienaruszona.
+
+4. Zabezpieczenie danych
+Dysk NVMe 1 TB podłączony przez blokadę zapisu (Tableau TX1). Obraz E01, weryfikacja:
+SHA-256 dysku: 3f9c1e7a5b0d42c6a8e1f07b9d3c2a6e5f4b8c1d0e9a7b6c5d4e3f2a1b0c9d8e
+SHA-256 obrazu: 3f9c1e7a5b0d42c6a8e1f07b9d3c2a6e5f4b8c1d0e9a7b6c5d4e3f2a1b0c9d8e (zgodne)
+Identyfikacja urządzenia w sieci: MAC Wi-Fi 54a0.507c.4788 i MAC Ethernet 6C-DE-6E-22-EA-57 zgodne z wpisami w logach NAC z 05.10–26.10.2026; adres wewnętrzny z DHCP 192.168.72.37.
+
+5. Ustalenia
+5.1 Klient P2P: qBittorrent 4.6.5 w profilu klymczukw, katalog C:\Users\klymczukw\AppData\Roaming\qBittorrent, instalacja portable 04.10.2026 (bez uprawnień administratora).
+5.2 Pliki: D:\Pobrane\_ – 37 plików wideo (filmy kinowe z lat 2024–2026) oraz instalator pakietu graficznego z plikiem keygen.exe i zmodyfikowaną biblioteką licencyjną. Łącznie 214 GB.
+5.3 Udostępnianie: dziennik klienta i plik fastresume wskazują wysyłanie danych z adresu 192.168.72.37 przez publiczny adres 84.228.71.66 do co najmniej 412 węzłów, m.in. 9.109.126.28. Łączny wysłany wolumen: 1,31 TB.
+
+6. Oś czasu (wybrane sesje)
+05.10.2026 18:42–23:10 – pierwsze pobieranie, rozpoczęcie udostępniania
+12.10.2026 09:05–16:30 – sesja w godzinach pracy, 186 GB wysłane
+19.10.2026 21:14–02:47 – sesja po godzinach, laptop w sieci biurowej przez Wi-Fi
+26.10.2026 08:01–17:55 – ostatnia sesja przed odebraniem urządzenia
+
+7. Materiał prywatny wyłączony z badania
+W pamięci podręcznej przeglądarki znajdują się dane aplikacji randkowej, z których wynika związek pracownika z innym mężczyzną. Materiał ten nie ma związku z celem badania: nie był analizowany, nie został wyeksportowany i nie wchodzi do zestawu dowodowego. Nie jest opisywany w dalszej części sprawozdania.
+
+8. Rekomendacje
+- przechowywać obraz dysku 12 miesięcy, do 06.11.2027, w sejfie wykonawcy;
+- zablokować protokoły P2P na zaporze (kategoria aplikacji „P2P”);
+- wdrożyć listę dozwolonych aplikacji (AppLocker / WDAC), także dla instalacji portable.
+
+9. Wykaz dowodów
+D1 – laptop PB939XY, torba 0044127
+D2 – obraz E01 dysku, SHA-256 jak w pkt 4
+D3 – eksport logów NAC i zapory 05.10–26.10.2026, SHA-256: 8b2d0f6c4a1e9d7b3c5f2a0e8d6b4c2a1f9e7d5c3b1a0f8e6d4c2b0a9f7e5d3c
+Termin przechowywania: 06.11.2027
+
+Następny krok po stronie zleceniodawcy: decyzja Patryka Bigosa i zarządu w sprawie zawiadomienia o podejrzeniu popełnienia przestępstwa.
+
+Sporządził: Konrad Dobija, pentester, Sarnowo Bezpieczeństwo IT S.A. · konrad.d@sarnowobezpieczenstwo.pl

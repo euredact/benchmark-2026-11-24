@@ -1,0 +1,11 @@
+# Presidio as shipped: predefined recognizers for each language (load_predefined_recognizers), spaCy NER with
+# Presidio's default entity mapping, default score threshold (0: everything Presidio returns). The only choice made
+# here is the spaCy model per language: the large model for each, as Presidio's English default (en_core_web_lg).
+models:
+  en: en_core_web_lg
+  fr: fr_core_news_lg
+  de: de_core_news_lg
+  nl: nl_core_news_lg
+  pl: pl_core_news_lg
+  da: da_core_news_lg  # added 2026-11-21 for the Danish parts of IT-360 / HR-360 / MED-360
+score_threshold: 0.0

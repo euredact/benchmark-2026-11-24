@@ -1,0 +1,43 @@
+Forensic investigation report – EMB-2026-031 – illegal content uploaded from a work laptop – Plovermead Accountants Ltd.
+
+Prepared by: Lee Tetley, Incident Response Lead, Emberings Cyber Security Ltd.
+For: Kelly Larkham, Managing Director; Charlotte Ottaway, HR Business Partner; Plovermead's external solicitors
+Date: 17 November 2026
+Classification: STRICTLY CONFIDENTIAL – legally privileged, prepared at the request of the solicitors
+
+1. Background
+On 2 November 2026 the Metropolitan Police asked Plovermead to preserve evidence after intimate images of a woman were uploaded to an image-sharing site from Plovermead's office internet connection on the evening of Tuesday 27 October. The woman reported the upload to the police. Because the user of the device turned out to be the firm's Legal Counsel, the review was commissioned directly by the Managing Director.
+
+2. Trace
+- Firewall NAT log, 27 Oct 19:42:13: internal 192.168.143.90 → 223.122.250.28:443 (image-sharing site), 14 POST requests over 6 minutes.
+- DHCP lease for 192.168.143.90 at that time: Wi-Fi MAC 4c:57:a0:4d:03:be.
+- Asset register: that MAC belongs to laptop serial 5CG4286MNQ, assigned to Lisa Cornforth, Legal Counsel.
+- Windows security log: interactive logon as lcornforth from 18:55; no other session on the device until 07:30 the next morning.
+The laptop was imaged on 10 November (write-blocked, SHA-256 verified) and the original is sealed in our evidence store.
+
+3. Findings
+Finding 1. Browser history and the Downloads folder of the lcornforth profile show 14 images uploaded to the site in that session. The material was classified by hash and file metadata only. It is not reproduced in this report.
+Finding 2. Messages in the same browser profile identify the woman in the images as Ms Cornforth's former same-sex partner. The relationship is stated only because it is the context of the suspected offence; no message content is reproduced.
+
+4. Attribution artefacts
+- A scan of passport 681071324 in the name of Lisa Cornforth in Downloads from a personal travel booking.
+- RingGo parking receipts for vehicle LE19 JUS in the browser history, covering the street next to the office on the evening of 27 October.
+- No other user profile was active on the device during the upload window.
+
+5. Assessment
+The activity is consistent with sharing an intimate photograph without consent (Sexual Offences Act 2003, s.66B). Whether an offence was committed is for the police and the courts to decide.
+
+6. Recommendations
+- Keep the forensic image and the original laptop sealed.
+- Suspend Ms Cornforth's access to all systems pending the police enquiry.
+- Provide the evidence to the police only through the solicitors.
+- Offer support to the affected person via the police only; Plovermead should not contact her directly.
+
+Actions and owners
+- Kelly Larkham: instruct the solicitors to respond to the police by 20 November 2026.
+- Charlotte Ottaway: manage the suspension.
+- Emberings: hold the evidence under seal.
+
+Signed
+Lee Tetley
+Incident Response Lead, Emberings Cyber Security Ltd.

@@ -1,0 +1,37 @@
+Analyse CEO-fraude e-mail 15-09-2026 – Valkwaard Energie
+
+Opgesteld door: Sabine Brouns, Lijsterrijk Cybersecurity B.V.
+Voor: Ruud Ruijgrok (Financieel directeur) en het financeteam van Valkwaard Energie BV
+Datum: 17 september 2026
+Classificatie: vertrouwelijk
+
+Samenvatting
+Op dinsdag 15 september ontving Peter Tjepkema een e-mail die van Ruud Ruijgrok leek te komen, met het verzoek om met zijn inkooppas met spoed prepaidkaarten te kopen voor "drukwerk voor de campagne". Er is niets betaald. Peter heeft de mail doorgestuurd naar finance, die hem bij ons heeft gemeld.
+
+1. Headeranalyse
+From: "Ruud Ruijgrok" <directie@valkwaard-energie-nl.com>
+Reply-To: directie@valkwaard-energie-nl.com
+Received: from vps-2291.hostingprovider.example ([75.13.40.124])
+Authentication-Results: spf=fail (sender IP is 75.13.40.124) smtp.mailfrom=valkwaard-energie-nl.com; dkim=none; dmarc=fail
+De weergavenaam klopt, maar het adres is een algemeen ogend rolachtig adres op een lookalike-domein dat op 11 september is geregistreerd. Het echte adres van Ruud is r.ruijgrok@valkwaard-energie.nl. De mail is verstuurd vanaf een gehuurde VPS, niet vanaf onze of jullie mailserver.
+
+2. Het voorwendsel
+De aanvaller speelde in op het feit dat Ruud kandidaat is voor de Provinciale Statenverkiezingen van maart 2027. Dat staat openbaar op zijn sociale media, en "de campagne" maakte het verzoek aannemelijk. In de mail stond een link naar een nagemaakte kopie van zijn intranetprofiel op het lookalike-domein. Het echte profiel staat op https://intranet.valkwaard-energie.nl/people/ruijgrokr en is alleen intern bereikbaar; de kopie bevatte zijn foto en functietitel en een formulier om de "bestelling" te bevestigen.
+
+3. OSINT-bevinding
+Bij het onderzoek vonden we het privéadres ruud.ruijgrok@mailbox.test in een openbaar gemaakt datalek van een webwinkel. In die dataset staat ook een creditcard op zijn naam, gemaskeerd tot **** **** **** 5007. Het advies is om deze kaart bij de bank te laten blokkeren en het wachtwoord van het privémailadres te wijzigen. Dit staat los van de bedrijfssystemen, maar verklaart mogelijk hoe de aanvaller gegevens over Ruud heeft verzameld.
+
+4. Ontvanger
+Peter Tjepkema (Magazijnchef, p.tjepkema@valkwaard-energie.nl) heeft geen kaarten gekocht en de mail direct doorgestuurd. Goed gehandeld: hij twijfelde omdat Ruud hem nooit eerder om aankopen had gevraagd.
+
+5. Maatregelen
+| Maatregel | Eigenaar | Datum |
+| Lookalike-domein blokkeren in mailfilter en proxy | Lijsterrijk | vandaag, 17-09 |
+| Banner "externe afzender" boven alle externe mail | Lijsterrijk | 24-09 |
+| Vier-ogenprincipe voor aankopen met inkooppassen | finance | 01-10 |
+
+Vragen over deze analyse kunt u aan mij richten.
+
+Sabine Brouns
+Incident response lead, Lijsterrijk Cybersecurity B.V.
+sabine_brouns@lijsterrijk-cybersecurity.nl

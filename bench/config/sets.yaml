@@ -1,0 +1,25 @@
+# The sample sets in this kit. `root` points at a set folder (docs/, gold.jsonl, labels.json, scripts/score.py);
+# set BENCH_DATA_DIR to the kit's data/ folder. labels_file adds the tool mappings the harness scores with.
+
+defaults: &defaults
+  docs_dir: docs
+  gold: gold.jsonl
+  labels: labels.json
+  scorer:
+    script: scripts/score.py
+    args: ["{gold}", "{pred}", "--tool", "{tool}", "--labels", "{labels}", "--json", "{out}"]
+    output: file
+
+sets:
+  it360:
+    <<: *defaults
+    root: ${BENCH_DATA_DIR}/it360
+    labels_file: labels/it360.json
+  hr360:
+    <<: *defaults
+    root: ${BENCH_DATA_DIR}/hr360
+    labels_file: labels/hr360.json
+  med360:
+    <<: *defaults
+    root: ${BENCH_DATA_DIR}/med360
+    labels_file: labels/med360.json

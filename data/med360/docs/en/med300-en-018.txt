@@ -1,0 +1,21 @@
+[1] Kirkbridge General Hospital Patient Portal <noreply@kirkbridge-hospital.nhs.uk>
+To: ebrookbank@inbox.example
+Subject: Video consultation confirmed - Mon 14 Sep 10:30
+Account: brookbank66. Private paediatric allergy clinic (self-pay). Card ending **** **** **** 9773 charged.
+Connection log: 10:30 attempt failed from 97.252.218.240, device EC:82:78:68:FF:90 (face login enabled). Rebooked 11:15, connected.
+
+[2] From: Dr Bethany Ratcliffe
+To: Eleanor Brookbank; cc Dr Danielle Kenyon, Holmlea Medical Practice
+Subject: Oliver Brookbank - allergy plan
+
+Dear Eleanor,
+Thank you for today. Oliver developed hives and lip swelling 10 minutes after eating cashews, in keeping with tree-nut allergy.
+Plan:
+- Avoid all tree nuts.
+- Adrenaline auto-injector 300 micrograms, two to carry.
+- Cetirizine 5 mg as needed for mild reactions.
+- Skin-prick tests on 12 October 2026.
+You and your wife should both have injector training.
+Dr Kenyon: please prescribe the auto-injectors.
+
+Dr Bethany Ratcliffe, Consultant in Paediatrics

@@ -1,0 +1,27 @@
+# Log-Sicherung zu Az. 254 Js 1187/26 (Staatsanwaltschaft Berlin, Ersuchen der Polizei Berlin), Ermittlungsverfahren gegen Marco Rohlfing wegen Computerbetrugs; Zeitraum 01.11.-03.11.2026
+# Quelle: api-gw-prod (Kong), Spechtwiese Software GmbH & Co. KG, Smart-Home-App
+# Filter: account=whustedt55 ODER src_ip=106.235.111.159; Felder: Zeit (UTC), Quell-IP, Methode, Pfad, Status, Konto, Zusatz
+# Zur Kontowiederherstellung und für das Ersuchen; keine weiteren Kundendaten enthalten.
+
+2026-11-01T08:12:03Z 70.200.72.18 POST /v2/auth/login 200 account=whustedt55 login=whustedt@inbox.example mfa=none client=android/5.14.2
+2026-11-01T08:12:05Z 70.200.72.18 GET /v2/hubs 200 account=whustedt55 hub_mac=8C:00:A8:D1:6C:A6 fw=3.8.1
+2026-11-02T18:47:31Z 70.200.72.18 POST /v2/auth/refresh 200 account=whustedt55 client=android/5.14.2
+2026-11-02T23:41:09Z 106.235.111.159 POST /v2/auth/password-reset/request 202 login=whustedt@inbox.example client=web/chrome-130
+2026-11-02T23:44:52Z 106.235.111.159 POST /v2/auth/password-reset/confirm 200 account=whustedt55 token_age=223s
+2026-11-02T23:44:53Z 106.235.111.159 POST /v2/auth/login 200 account=whustedt55 mfa=none client=web/chrome-130
+2026-11-02T23:44:53Z DEBUG jwt-issuer issued account=whustedt55 access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDYxNzciLCJpYXQiOjE3NjY3MTIzODF9.CpLjq0M_0HCFLPNpaS0C8ZupzF1Mz3WAd7UJUBkS3IU
+#   ^ Anm. K.S.: Logging-Fehler, das Token dürfte nicht im Klartext erscheinen (Bug PLAT-2291). Im Payload steht als sub die interne Konto-ID statt des Logins, und iat zeigt 26.12.2025 (Anlage des Kontos) statt der Ausstellungszeit, weil der Issuer beim Passwort-Reset die iat der ursprünglichen Kontobindung übernimmt (ebenfalls PLAT-2291). Token durch Session-Widerruf am 03.11. 07:16 ungültig.
+2026-11-02T23:49:20Z 106.235.111.159 POST /v2/devices/register 201 account=whustedt55 device_mac=20-40-EE-B3-19-2F type=hub fw=3.8.1 client=web/chrome-130
+2026-11-02T23:52:37Z 106.235.111.159 POST /v2/billing/cards 201 account=whustedt55 card=**** **** **** 1757 default=true
+2026-11-02T23:55:02Z 106.235.111.159 POST /v2/shop/orders 201 account=whustedt55 order=SO-4471902 items=3 ship_to=changed
+2026-11-03T00:03:18Z 106.235.111.159 POST /v2/shop/orders 201 account=whustedt55 order=SO-4471915 items=2 ship_to=changed
+2026-11-03T06:58:40Z 70.200.72.18 POST /v2/auth/login 401 account=whustedt55 reason=invalid_password client=android/5.14.2
+2026-11-03T07:12:00Z (Support-Telefonat: Kunde Wolfgang Hustedt meldet Übernahme, Ticket CS-209331)
+2026-11-03T07:16:44Z 10.158.144.11 POST /admin/v1/accounts/whustedt55/sessions/revoke 200 admin=kerstins revoked=3
+2026-11-03T07:18:02Z 10.158.144.11 DELETE /admin/v1/accounts/whustedt55/devices 200 admin=kerstins device_mac=20-40-EE-B3-19-2F
+
+# --- Ende des Auszugs: 15 Zeilen, 1 Kommentar ---
+# SHA-256 der Exportdatei: 884fd4c8cfeb4abccbb4b123c68d1664619655827b1baacdac0def670dec86b4
+# Exportiert von Kerstin Söhnholz am 09.11.2026 10:05, übergeben an die Rechtsabteilung (zur Weitergabe durch Dragana Barišić).
+# Umfang: nur Konto whustedt55 und Quell-IP des Angreifers; Bestellinhalte, Lieferadressen und andere Kunden nicht enthalten.
+# Status: Konto wiederhergestellt, Bestellungen SO-4471902 und SO-4471915 storniert, Karte entfernt. Antwort an die Polizei durch Dragana Barišić bis 2026-11-13.

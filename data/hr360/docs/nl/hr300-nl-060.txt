@@ -1,0 +1,67 @@
+Oostvoorne Facilitair N.V. – HR
+
+RAPPORTAGE OVERUREN EN CONSIGNATIE Q3 2026 – LOCATIE DATACENTER EINDHOVEN
+
+Opgesteld door: Johan Haaijer, HR-adviseur
+Voor:           Joris Zeldenrust, facilitair manager (goedkeuring)
+Kopie:          securitycontact van de opdrachtgever (alleen de bijlage met logextracten)
+Datum:          9 oktober 2026
+Periode:        1 juli – 30 september 2026
+
+1. Aanleiding
+Wij verzorgen de beveiliging en schoonmaak in het datacenter van Kempenstroom Datacenters BV in Eindhoven. In het derde kwartaal hebben twee medewerkers bezwaar gemaakt tegen hun overuren en consignatie-oproepen: volgens hen toonde de planningstool minder uren dan ze werkelijk hebben gewerkt. Voordat de salarisverwerking van oktober draait, heb ik de uren gereconstrueerd. In dit rapport staan de uitkomsten, de gebruikte bronnen en hun beperkingen, en een voorstel voor uitbetaling.
+
+2. Gebruikte bronnen
+a) Planningstool – geplande diensten, ruilingen en geregistreerde overuren, gebruikers mkleinhuis en mvandelaar.
+b) Toegangslog van de opdrachtgever – toegangsterminal hoofdingang, serienummer C02M17V5L768, IP-adres 10.22.188.249, MAC-adres 20-F8-9B-D5-D1-DC. Per toegangsgebeurtenis: tijdstip, richting (in/uit) en template-ID.
+c) Parkeerlog (kentekenherkenning) van het terrein – tijdstip van binnenrijden en kenteken.
+
+Beperkingen: het toegangslog registreert alleen de hoofdingang, niet de pauzes binnen het gebouw. Het parkeerlog toont alleen dat de auto binnenreed, niet wie er reed. Ik heb de bronnen daarom altijd samen beoordeeld en alleen uren meegeteld die door ten minste twee bronnen worden bevestigd.
+
+3. Toelichting biometrie
+De opdrachtgever verplicht alle medewerkers op de locatie om toegang te krijgen via handaderherkenning. De handadertemplates worden beheerd en opgeslagen door de opdrachtgever. Oostvoorne ontvangt per toegangsgebeurtenis alleen het template-ID. Voor Monique Kleinhuis is dat handadertemplate HV-80449-01. Wij slaan zelf geen templates op. De grondslag voor de verwerking (art. 29 UAVG, noodzakelijk voor de beveiliging van het datacenter) ligt bij de opdrachtgever. Het template-ID gebruiken wij alleen om toegangsgebeurtenissen aan de juiste medewerker te koppelen.
+
+4. Monique Kleinhuis – beveiliger – PN-80449
+
+Bron                       | Overuren Q3
+Planningstool              | 18,0 uur
+Toegangslog (HV-80449-01)  | 26,5 uur
+Verschil                   | 8,5 uur
+
+Consignatie-oproepen ('s nachts), bevestigd door toegangslog én parkeerlog (kenteken 36-BDB-2):
+- dinsdag 7 juli, binnenkomst 02:10
+- woensdag 22 juli, binnenkomst 03:45
+- vrijdag 14 augustus, binnenkomst 01:20
+- woensdag 2 september, binnenkomst 04:05
+De planningstool registreerde geen van deze vier oproepen. Monique heeft ze telefonisch aan de meldkamer doorgegeven, maar ze zijn daarna niet in de tool ingevoerd.
+
+5. Marloes van de Laar – schoonmaakster – PN-94536
+
+Bron                       | Overuren Q3
+Planningstool              | 0,0 uur
+Toegangslog en parkeerlog  | 9,0 uur
+Verschil                   | 9,0 uur
+
+Marloes heeft op drie zaterdagen extra gewerkt na een dienstruil met collega's: 11 juli, 8 augustus en 19 september, telkens 3 uur. De ruilingen zijn mondeling afgesproken en niet in de planningstool ingevoerd. Het parkeerlog toont haar kenteken J-493-SP op alle drie de zaterdagen; het toegangslog bevestigt de tijden.
+
+6. Toets Arbeidstijdenwet
+- Maximale arbeidstijd: in geen enkele week is het maximum van 60 uur overschreden, ook niet met de nachtelijke oproepen.
+- Dagelijkse rust: bij Monique is de dagelijkse rust één keer ingekort tot 8 uur, na de oproep van 14 augustus. Art. 5:3 Atw staat dit één keer per periode van 7 x 24 uur toe. In dezelfde periode is de rust niet nog eens ingekort. Er is dus geen overtreding en niets te melden.
+- Bij Marloes zijn geen afwijkingen gevonden.
+
+7. Voorstel uitbetaling
+- Monique Kleinhuis: 8,5 extra overuren en 4 consignatievergoedingen voor oproepen.
+- Marloes van de Laar: 9 overuren.
+Uitbetaling met de salarisverwerking van oktober. De salarisadministratie berekent de bedragen volgens de cao-tarieven voor overwerk en consignatie.
+
+8. Procesverbetering
+- Dienstruilingen worden dezelfde dag door de teamleider in de planningstool ingevoerd.
+- Consignatie-oproepen worden door de meldkamer direct in de tool vastgelegd.
+- HR vergelijkt elke maand de planningstool met de toegangslogs en meldt verschillen aan de facilitair manager.
+
+9. Gevraagd besluit
+Ik vraag je, Joris, om het voorstel onder punt 7 uiterlijk vrijdag 16 oktober 2026 goed te keuren, zodat de salarisadministratie het in de run van oktober kan meenemen.
+
+Johan Haaijer
+HR-adviseur
+Oostvoorne Facilitair N.V.

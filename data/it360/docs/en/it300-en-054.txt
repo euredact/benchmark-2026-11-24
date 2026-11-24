@@ -1,0 +1,23 @@
+# CASE-55218 – order ORD-2026-104477 – order-service log 2026-10-24 14:02–14:09 BST
+# Attached by Laura Bagot (Support Engineer) for Andrew Plowright (QA Engineer) and the payments team
+# Source: order-svc-prod, Ploverfold Apps plc web shop; local UK time (BST on 24 Oct, GMT on 26 Oct); payment IDs truncated
+10-24 14:02:11 INFO  order-svc  session.start user=ian.chillcott client=hub-app/5.12.0 (android) src_ip=72.174.238.207
+10-24 14:02:11 INFO  order-svc  device.check user=ian.chillcott hub_mac=BC-71-2B-51-42-A3 registered=true
+10-24 14:03:48 INFO  order-svc  order.created id=ORD-2026-104477 user=ian.chillcott email=chillcott.ian20@inbox.example sku=PH-HEAT-START-01 qty=1 total=179.00 GBP
+10-24 14:03:48 INFO  order-svc  order.delivery_note id=ORD-2026-104477 text="side door please – I use a wheelchair, front steps not accessible"
+10-24 14:03:48 INFO  risk-client  POST http://172.23.173.212:8080/v1/score order=ORD-2026-104477 status=200 score=12
+10-24 14:03:49 INFO  payment-svc  provider=Stripe payment_intent.create pi=pi_3Q8x…A1 amount=179.00 GBP idempotency_key=ord-104477-1
+10-24 14:03:51 INFO  payment-svc  provider=Stripe payment_intent.confirm pi=pi_3Q8x…A1 status=requires_capture (authorised)
+10-24 14:04:21 WARN  payment-svc  gateway timeout after 30000 ms waiting for confirm webhook pi=pi_3Q8x…A1
+10-24 14:04:21 INFO  payment-svc  retry attempt=2 order=ORD-2026-104477 idempotency_key=ord-104477-2
+10-24 14:04:22 INFO  payment-svc  provider=Stripe payment_intent.create pi=pi_3Q8y…C7 amount=179.00 GBP idempotency_key=ord-104477-2
+10-24 14:04:24 INFO  payment-svc  provider=Stripe payment_intent.confirm pi=pi_3Q8y…C7 status=requires_capture (authorised)
+10-24 14:04:58 INFO  webhook     event=payment_intent.amount_capturable_updated pi=pi_3Q8x…A1 received_late=true delay_ms=69400
+10-24 14:04:58 ERROR order-svc  state.transition order=ORD-2026-104477 from=PAYMENT_PENDING to=PAID rejected: active_intent=pi_3Q8y…C7 != event_intent=pi_3Q8x…A1
+10-24 14:05:01 WARN  order-svc  state.transition order=ORD-2026-104477 skipped: 2 authorised intents for one order, manual review flag set
+10-24 14:05:01 INFO  fulfilment  label.create carrier=DPD order=ORD-2026-104477 skipped: order not PAID
+...
+10-26 09:12:37 INFO  admin-svc  support.action actor=lbagot16 case=CASE-55218 action=cancel_intent pi=pi_3Q8y…C7 amount=179.00 GBP reason=duplicate_authorisation
+10-26 09:12:38 INFO  fulfilment  label.create carrier=DPD order=ORD-2026-104477 status=created
+
+# Note (Laura Bagot, 26 Oct 09:20): the 30 s timeout fires before the first webhook, and retry 2 uses a new idempotency key, so the card was authorised twice. Duplicate hold released at 09:12 today; order now PAID, label created. QA to reproduce with the 30 s timeout – Andrew Plowright, by 28 Oct. Customer informed by email.

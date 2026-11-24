@@ -1,0 +1,43 @@
+Bitbucket · egelles/klantportaal · Pull request #227 "Fix: adresvalidatie bij profielupdate"
+Auteur: @njongeneel31 · Reviewers: @vdegroote78, @jgyselinck49 · bestand tests/fixtures/customers.json
+
+@jgyselinck49 (Jonas Gyselinck, Customer success manager) · do 29-10-2026 10:14
+Deze fixture bevat echte klantgegevens – ik herken Sven Vergote (klacht CS-2210). De PR werd gisteren in #dev-klantportaal gedeeld, zo kwam ik hem tegen. Het gaat om deze regels:
+
+```json
+  {
+    "username": "svergote72",
+    "email": "svenv@home.example",
+    "profile_url": "https://mijn.egelles-apps.be/u/svergote72",
+    "api_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMzU4MDEiLCJpYXQiOjE3Njg5NzEyMjJ9._Xy_G1ueF5nMit2JzO1xO9u8b3Svv3ZIGN7BEBGFVKM"
+  },
+  {
+    "username": "rvanoppen26",
+    "email": "vanoppen.robbe95@home.example",
+    "profile_url": "https://mijn.egelles-apps.be/u/rvanoppen26",
+    "api_token": null
+  }
+```
+
+Bovendien lijkt dat api_token een geldig sessietoken uit productie. Ik heb het niet geprobeerd, maar de payload heeft geen exp-claim, dus het verloopt niet vanzelf.
+
+@njongeneel31 (Niels Jongeneel) · 10:31
+Klopt, sorry. Ik heb die twee records uit prod geëxporteerd om de bug met de huisnummertoevoeging te reproduceren, want die trad alleen op bij hun adresformaat. Ik had ze moeten anonimiseren voor de commit. Akkoord om ze eruit te halen.
+
+@vdegroote78 (Valerie Degroote, Product owner) · 10:52
+Beslissing:
+1. Merge geblokkeerd tot de fixture vervangen is.
+2. Token van svergote72 vandaag intrekken en alle sessies van dat account ongeldig maken.
+3. Branchhistorie herschrijven zodat de records nergens meer in de commits staan; ook de kopie in de Slack-preview laten verwijderen.
+4. Nieuwe fixtures genereren met Faker (nl_BE), met hetzelfde adresformaat als in de bug, zodat de test blijft werken.
+5. De DPO inlichten via dpo@egelles-apps.be; die beslist of de klanten geïnformeerd moeten worden.
+Vraag aan Atlassian is niet nodig: we beheren de repo zelf, maar ik laat de pipeline-artifacts van deze branch ook opruimen.
+
+@jgyselinck49 (Jonas Gyselinck) · 11:05
+Duidelijk. Ik ga in mijn contact met Sven over CS-2210 hier niets over zeggen, tenzij de DPO besluit dat we hem moeten informeren.
+
+@njongeneel31 (Niels Jongeneel) · 14:20
+Token ingetrokken om 13:58, sessies van het account zijn gereset. Nieuwe synthetische fixtures volgen uiterlijk ma 2 november, de branch wordt dan opnieuw gepusht.
+
+@vdegroote78 (Valerie Degroote) · 14:35
+Changes requested. DPO is geïnformeerd. Egelles Apps · status: wacht op nieuwe fixtures (2 november)

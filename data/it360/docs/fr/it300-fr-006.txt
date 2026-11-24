@@ -1,0 +1,37 @@
+Post-mortem — expiration du certificat wildcard — indisponibilité du 05/10/2026
+Genêtbourg Recrutement SARL — site de Lyon | Rédigé le 08/10/2026 par Joël Larrouy, ingénieur réseau
+Diffusion : direction, équipe IT, Max Calmes (responsable de la production, Abeillemesnil Infogérance)
+
+1. Impact
+- Portail candidats en erreur TLS (NET::ERR_CERT_DATE_INVALID) de 07h50 à 10h35.
+- API du système de lecture de plaques (LAPI) du parking hors service sur la même période : barrière bloquée.
+- Signalements de Benjamin Reibel (responsable RH) et d'Ibrahima Wagué (chargé de marketing), dont les plaques FP-794-CT et QK-177-JK ont été rejetées à 07h58 et 08h06.
+- Ibrahima, titulaire d'une place PMR, n'a pas pu se garer ; l'accueil a ouvert la barrière manuellement à 08h20.
+
+2. Chronologie
+31/08 00h00 — expiration du jeton API DNS utilisé par certbot (hébergé chez l'infogérant).
+05/09 03h15 — ouverture de la fenêtre J-30 ; première tentative de renouvellement : 401 Unauthorized sur l'API DNS.
+05/09 → 04/10 — 30 échecs quotidiens, sortie écrite uniquement dans /var/log/letsencrypt/letsencrypt.log.
+05/10 07h50 — notAfter atteint (05:50 UTC) ; le reverse proxy 172.20.144.231 présente un certificat expiré.
+05/10 07h58 — le contrôleur LAPI 192.168.44.96 journalise « TLS handshake failed » puis « plate rejected: FP-794-CT ».
+05/10 08h31 — jlarrouy97 ouvre l'incident, identifie l'expiration via openssl s_client.
+05/10 09h05 — escalade chez l'infogérant ; calmesm constate le jeton DNS expiré.
+05/10 10h20 — nouveau jeton créé, certificat renouvelé et déployé par Max Calmes.
+05/10 10h35 — redémarrage du service LAPI par jlarrouy97 ; retour à la normale.
+
+3. Cause racine
+Le jeton API DNS-01 a expiré le 31/08, avant l'ouverture de la fenêtre de renouvellement. Les 30 tentatives certbot ont échoué silencieusement : aucune remontée vers la supervision, et aucune sonde ne surveillait la date d'expiration du certificat.
+
+4. Correctif
+Jeton renouvelé (validité 12 mois), certificat valide jusqu'au 03/01/2027, service LAPI redémarré.
+
+5. Actions
+| Action | Responsable | Échéance |
+| Alerte d'expiration du certificat (J-30 / J-7) et alerte sur échec du job certbot | Max Calmes | 16/10/2026 |
+| Rotation du jeton DNS avec suivi d'échéance dans le référentiel | Max Calmes | 16/10/2026 |
+| Procédure d'ouverture manuelle de la barrière, priorité aux places PMR | Joël Larrouy | 14/10/2026 |
+
+Validation demandée à la direction et à l'infogérant avant le 12/10/2026.
+
+Joël Larrouy
+Ingénieur réseau — Genêtbourg Recrutement

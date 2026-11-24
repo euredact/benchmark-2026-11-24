@@ -1,0 +1,48 @@
+Anmodning om adgang til serverrum (fingeraftrykslæser)
+Granhede Advokatfirma ApS · Kællingetandallé 67, 8900 Randers C
+Rum: kælder, serverrum og arkiv (K-04)
+
+Anmodningsdato: 28.09.2026
+Sagsnr.: ADG-2026-031
+
+Vigtigt: Denne formular bruges kun til at godkende adgang og booke tid til registrering. Formularen indeholder ingen fingeraftryksdata. Registreringen af fingeraftryk sker på læseren hos leverandøren, og leverandørens tekniker kontrollerer identiteten med pas ved fremmødet. Fødselsdato og pasnummer står her, så teknikeren kan matche personen med passet.
+
+A. Adgang ønskes for
+
+Ansøger 1
+Navn: Rasmus Skydsgaard
+Stilling: lagerchef
+Medarbejdernr.: PN-12671
+Brugernavn (kobles i adgangssystemet): rskydsgaard
+Fødselsdato: 21.03.1990
+Pas, der medbringes: 778743012
+Adgang: alle dage 06.00-20.00
+
+Ansøger 2
+Navn: Kamilla Storgaard
+Stilling: kundeservicemedarbejder
+Medarbejdernr.: PN-78063
+Brugernavn (kobles i adgangssystemet): kstorgaard
+Fødselsdato: 14.12.1980
+Pas, der medbringes: 906691332
+Adgang: hverdage 08.00-17.00
+
+B. Begrundelse
+Rasmus står for arkivet og den ugentlige båndrotation af backup, som kræver adgang til serverrummet hver mandag og ved udlån fra arkivet. Kamilla er hans backup og overtager båndrotationen i ferier og ved fravær, så rotationen ikke springes over.
+
+C. Adgang der fjernes
+Navn: Oscar Skjøth
+Stilling: marketingkoordinator
+Medarbejdernr.: PN-46942
+Brugernavn: oskjoeth
+Begrundelse: Adgangen blev givet under flytningen af arkivet i foråret og er ikke længere nødvendig. Adgangen spærres i læseren samme dag.
+
+D. Registrering hos leverandøren
+Tid: torsdag 01.10.2026 kl. 10.00, ca. 15 minutter pr. person
+Sted: ved serverrummet i kælderen
+Medbring: gyldigt pas. Uden pas gennemføres registreringen ikke.
+
+E. Godkendelse
+Godkendt af kontorchefen: ☑ 29.09.2026
+Adgang for Oscar Skjøth fjernet i adgangssystemet: ☑ 29.09.2026 (IT)
+Tid hos leverandøren bekræftet: ☑ 01.10.2026 kl. 10.00

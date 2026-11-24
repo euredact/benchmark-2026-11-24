@@ -1,0 +1,22 @@
+Ændringsanmodning CN2026117: Migrering af postkasser til Exchange Online – weekend 21.-22.11.2026
+
+Kunde: Flintmose Laboratorier A/S · Leverandør: Bakkeholm IT-Drift I/S · Oprettet 17.11.2026
+Ændringsejer: Gustav Hagerup, servicetekniker
+
+Baggrund og omfang
+Exchange 2016 er ude af support. 140 postkasser flyttes i én batch via hybrid fra on-prem-serveren 192.168.114.47. Indgående migreringstrafik kommer fra 54.83.14.187 på port 443.
+
+Netværk
+Jump-hosten til migreringen (MAC 2C:18:62:A9:B5:34) lægges på NAC-allowlisten fra fredag 20.11 kl. 18 til mandag 23.11.
+
+Nedetid
+Ingen forventet. Brugerne genstarter Outlook mandag morgen.
+
+Rollback
+Postkasser, der fejler, bliver på on-prem; MX ændres først, når alle er verificeret.
+
+Kommunikation: mail til alle medarbejdere torsdag 19.11.
+NAC-undtagelsen fjernes mandag 23.11.2026.
+
+Godkendelse
+[ ] Godkendt   Thea Dørge, driftsdirektør   Dato: ________

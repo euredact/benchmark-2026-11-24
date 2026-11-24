@@ -1,0 +1,22 @@
+FH-SIRNA-302 - Site 044 Crayworth - screening and identification log - export 11/09/2026
+Site: Crayworth Community Hospital, 133 Furrow Street, Glasgow G12 6SD
+Site coordination: Merecroft Clinical Research Limited (CRO)
+Prepared by: Kenneth Piccinino, Clinical Research Coordinator (kenneth.p@merecroftresearch.com.mt)
+CONFIDENTIAL - site copy for the investigator site file. Contains identifiers; do not send to sponsor.
+
+screening_no,name,dob,ethnicity,email,econsent_url,id_passport,utr,ldl_c_mmol_l,genetic_result,decision
+044-001,Martin Marsland,11/05/1977,White British,martin.marsland72@mailbox.test,https://patient.crayworthhospital.nhs.uk/profile/marsland77,582909005,1425502169,5.8,LDLR c.1775G>A heterozygous pathogenic,ELIGIBLE - randomised
+P-002,J.S.,12/04/2019,,,,,,,,EXCLUDED AT PRE-SCREEN - age
+044-002,Beverley Gittens,03/01/2010,Black Caribbean,bgittens@inbox.example,https://portal.crayworthhospital.nhs.uk/u/beverley78,960382212,,3.1,no FH variant detected,SCREEN FAIL
+
+Notes
+044-001: LDL-C 5.8 mmol/L on atorvastatin 80 mg daily, above the entry threshold; heterozygous pathogenic LDLR variant confirms familial hypercholesterolaemia. All inclusion criteria met, no exclusions; randomised 10/09/2026. Self-employed chef: UTR recorded only to evidence the loss-of-earnings compensation paid for visit days. Identity checked against passport at eConsent.
+P-002: excluded from the referral letter before any approach - age 7, below the protocol minimum of 10. Family not contacted, no consent taken, no identifiers collected beyond the initials and DOB needed to record the age criterion.
+044-002: aged 16 at screening, so gave her own informed consent via eConsent (adult consent form; no parental consent needed); eConsent sent to the family email she nominated. Passport checked at eConsent. LDL-C 3.1 mmol/L, below the 3.5 mmol/L threshold; no FH variant found. Screen fail; Beverley informed by phone on 11/09/2026 and referred back to the lipid clinic for routine follow-up.
+
+Summary (aggregate): 3 referred, 2 screened, 1 randomised.
+
+Investigator review: eligibility decisions confirmed before randomisation on 10/09/2026, log reviewed 11/09/2026, by Dr Danielle Dunnington, Specialty Registrar in Cardiology, Sub-Investigator, GMC 3249539.
+
+PI sign-off: Dr Robert Latham, Consultant Cardiologist, Principal Investigator for site 044. Signed 11/09/2026.
+Next screening visit: 18/09/2026. File in ISF section 7.

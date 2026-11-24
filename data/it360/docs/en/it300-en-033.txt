@@ -1,0 +1,42 @@
+From: Noel Lohan <noel_lohan@rushhurst-systems.ie>
+To: Nicola Cotter
+Date: Mon, 9 Nov 2026 10:26
+Subject: Refund of duplicate September payment – customer WC-816821
+
+Dear Nicola,
+
+Thank you for your letter, and I'm sorry that you were charged twice for your subscription. You were right: your September direct debit was collected twice on 1 September 2026, and the second collection should never have happened.
+
+The duplicate collection was made up of:
+
+  Pro plan, September 2026          €39.50
+  SMS reminder bundle, September    €19.95
+  Net                               €59.45
+  VAT at 23%                        €13.67
+  Total collected in error          €73.12
+
+You mentioned that you only spotted it at the end of October because you were on sick leave for six weeks after a fractured wrist, and that this put you outside your bank's direct debit refund window. Please don't worry about that – it makes no difference to us. The money was taken in error and we are refunding it in full. I hope the recovery is going well.
+
+What caused it
+Our Software Developer Lorraine Busietta traced the problem to a retry job in our subscription engine. After a short outage at our payment provider on 1 September, the job resubmitted collections that had in fact already settled, so a small number of mandates were collected twice. Lorraine has corrected the job so that it checks the settlement status before retrying, and the fix went live in release 2026.11.1. Your October and November payments were collected once, correctly, and future payments are not affected.
+
+Your refund
+We will send €73.12 by bank transfer to the account you gave in your letter, which I have copied here exactly as pasted:
+
+  IE98 QLJM 4303 7112
+  7025 55
+
+You should see the money within 3 working days, so no later than Thursday 12 November 2026. The reference will read "RUSHHURST REFUND WC-816821".
+
+As you asked for written confirmation, a letter confirming the refund will also go by post to the address we hold for you:
+
+  Flat 14, 165 Wheelwright Lane
+  Galway H91 Y7HE
+
+If anything about the refund doesn't look right when it arrives, just reply to this email and I'll look into it straight away.
+
+Kind regards,
+
+Noel Lohan
+Customer Success Manager
+Rushhurst Systems Limited · 16 Flaxfield Lane, Kilkenny R95 F01V

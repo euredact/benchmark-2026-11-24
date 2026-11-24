@@ -1,0 +1,57 @@
+PROCÈS-VERBAL DE CHAÎNE DE POSSESSION — DOSSIER HX-2026-0417, SCELLÉS S-01 ET S-02
+
+Prestataire : Houxval Cybersécurité SRL, 6, allée des Tanneurs, 1000 Bruxelles — BCE 0430.676.238
+Mandant : Tamarisplaine Laboratoires SA, 137 impasse du Lavoir, 13010 Marseille
+Référence interne mandant : ticket INC-88215, ouvert par le compte lhochart
+Lieu et date de la saisie : site de Marseille, bureau de la direction administrative, 14/10/2026, 10h20
+
+1. Supports saisis
+
+Scellé S-01 — ordinateur portable Lenovo ThinkPad T14 Gen 4
+  N° de série : PFEON3M5
+  MAC Wi-Fi : a4:59:60:a1:1c:08
+  Dernière IP sur le LAN (journal DHCP du 13/10, 17h48) : 172.27.57.122
+  Attribué à : Jessica Malzac, comptable
+  État : capot fermé, en veille, session Windows ouverte au nom de jmalzac (écran verrouillé). Mis hors tension par
+  appui long sur le bouton d'alimentation après photographie de l'écran. Rayure sur le coin avant droit. Photos P-01 à P-06.
+
+Scellé S-02 — clé USB Samsung BAR Plus 128 Go
+  N° de série : R5NW8UHOAZA
+  Attribuée à : Jessica Malzac (clé de sauvegarde remise par le service comptable)
+  État : intacte, aucun voyant. Photos P-07 et P-08.
+
+2. Remise des supports
+
+Les deux supports ont été remis par Lucie Hochart, responsable administrative, qui les a récupérés à
+l'entrepôt de la société le matin même et transportés jusqu'au site avec son véhicule personnel, immatriculé
+VD-142-ES, dans un sac fermé resté dans le coffre pendant le trajet.
+Identité de la remettante vérifiée sur passeport n° 85BU12520.
+
+3. Déclaration de la salariée
+
+Jessica Malzac, présente lors de la saisie, déclare que le dossier « C:\Users\jmalzac\Documents\Personnel »
+contient des documents médicaux relatifs à son parcours de PMA avec son épouse. Elle demande que ce
+dossier ne soit pas examiné hors sa présence. Conformément à la jurisprudence sur les fichiers identifiés comme
+personnels, ce dossier ne sera ouvert qu'en présence de la salariée ou après l'avoir dûment appelée. Il est exclu
+de l'indexation automatique.
+
+4. Acquisition
+
+Image disque du S-01 réalisée le 14/10/2026 au laboratoire de Bruxelles avec bloqueur d'écriture matériel.
+SHA-256 de l'image : 9f3c1a7e52d84b06c9e1f0a2b7d6e35418c0a9f27e6d4b13c58e2f90a1d7b46e
+Le S-02 sera imagé lors de la même session ; son hash sera ajouté en annexe.
+
+5. Transferts
+
+Date/heure       | Remettant      | Receveur       | Motif                        | Signature
+14/10/2026 10h20 | L. Hochart     | T. Fivet       | remise sur site, mise sous scellés | ✔ / ✔
+14/10/2026 16h05 | T. Fivet       | Labo Houxval   | arrivée au laboratoire       | ✔ / ✔
+14/10/2026 18h40 | Labo Houxval   | T. Fivet       | fin d'acquisition S-01       | ✔ / ✔
+
+Prochain transfert prévu : archivage des scellés S-01 et S-02 au coffre de Houxval, le 15/10/2026.
+
+Signatures
+
+La remettante : Lucie Hochart
+La salariée : Jessica Malzac
+Le receveur : Thierry Fivet, Responsable réponse à incident, Houxval Cybersécurité SRL

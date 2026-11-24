@@ -1,0 +1,29 @@
+De : Daniel Nisolle <danielnisolle@montclairesante.be>
+À : Nathalie Malengreau <nathaliemalengreau@montclairesante.be>
+Date : jeudi 15 octobre 2026, 08:41
+Objet : Demande de rectification de mes données (art. 16 RGPD) – Daniel Nisolle, HR-79920
+Pièce jointe : copie_passeport.pdf
+
+Madame Malengreau,
+
+J'ai consulté le 12 octobre, depuis mon domicile (adresse IP 146.111.164.164 selon la confirmation d'accès du portail), la copie de mon dossier RH via le portail libre-service. Comme le portail le demande, je joins la copie de mon passeport n° VO746269. Merci de m'adresser la réponse écrite à mon domicile : 53 avenue de la Vannerie, 4100 Seraing.
+
+J'y ai relevé trois erreurs, dont je demande la rectification.
+
+1. Les 22, 23 et 24 septembre 2026 sont encodés comme congé de maladie. Il s'agissait en réalité de jours de formation syndicale du SETCa (congé de formation syndicale), dûment autorisés. Mon seul congé de maladie de la période est celui du 7 au 11 septembre, couvert par un certificat médical remis à temps.
+
+2. Ma page de profil intranet, https://intranet.montclairesante.be/people/dnisolle66, affiche toujours le statut « absent – maladie », un mois plus tard. Mes collègues et les autres services le voient.
+
+3. Une note de mars 2023 indique que j'ai été « accusé de coups et blessures » à la suite de la plainte d'un proche de patient. Cette plainte a été classée sans suite par le parquet en juin 2023. Cette note n'a plus de raison d'être : je demande qu'elle soit supprimée de mon dossier.
+
+Par ailleurs, lors de ma première tentative de téléchargement, le portail a affiché une page d'erreur technique reprenant sa configuration de stockage, dont une clé d'accès secrète AWS :
+Piba1hi3kgoi53jouqClXQuP90yeDCNBFSk8FLR1
+Je la cite une seule fois pour que le service informatique puisse la remplacer. Je ne l'ai évidemment pas utilisée et je supprimerai ma copie dès votre confirmation.
+
+Je vous remercie de me confirmer par écrit les corrections et la suppression de la note dans le délai d'un mois prévu par le RGPD, soit au plus tard le 15 novembre 2026. À défaut, je me réserve le droit de saisir l'Autorité de protection des données.
+
+Merci d'avance pour votre aide.
+
+Daniel Nisolle
+Infirmier, service des urgences
+Montclaire Santé, Charleroi

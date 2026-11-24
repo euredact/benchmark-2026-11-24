@@ -1,0 +1,47 @@
+Van: Snipbrink Cloud Facturatie <facturatie@snipbrink-cloud.nl>
+Aan: Peter Eussen
+Datum: do 5 november 2026
+Onderwerp: Uw eerste factuur en bevestiging overdracht account – klantnummer CUST-108086
+
+Beste heer Eussen,
+
+Sinds oktober staat het gezinsaccount voor cloudback-up op uw naam. Hieronder vindt u uw eerste factuur en, apart daarvan, de bevestiging van de wijziging van accounthouder.
+
+==================================================
+Factuur 2026-11-0573 – Snipbrink Cloud N.V.
+Steenbakkersweg 96, 5640 LM Eindhoven
+KvK 44430395 · btw-nr. NL352654132B01
+
+Factuur aan:
+P. Eussen
+Hopplein 167 bus 12
+5083 NX Tilburg
+Klantnummer: CUST-108086
+Factuurdatum: 05-11-2026 · Periode: november 2026
+
+Omschrijving                         Bedrag
+Family Backup 2 TB (maand)           € 49,00
+Extra apparaat (1)                   € 19,95
+Subtotaal                            € 68,95
+Btw 21%                              € 14,48
+Totaal                               € 83,43
+
+Betaling: het totaalbedrag van € 83,43 wordt op 10 november 2026 automatisch afgeschreven van uw creditcard **** **** **** 9295. U hoeft zelf niets te doen.
+==================================================
+
+Bevestiging wijziging accounthouder
+Op verzoek van Chantal Eussen is het account met klantnummer CUST-108086 op 14-10-2026 overgezet van Chantal Eussen naar Peter Eussen. Alle back-ups, apparaten en het abonnement zijn ongewijzigd overgegaan.
+
+Uw identiteit als nieuwe accounthouder is gecontroleerd met:
+- Documenttype: rijbewijs
+- Documentnummer: 4921084208
+- Datum controle: 14-10-2026
+
+De scan van uw rijbewijs is direct na de controle verwijderd. In ons KYC-dossier bewaren we alleen het documenttype, het documentnummer en de datum van de controle, zodat we kunnen aantonen dat de overdracht zorgvuldig is gebeurd.
+
+Heeft u deze overdracht niet zelf aangevraagd of klopt het documentnummer niet? Neem dan zo snel mogelijk contact op met onze klantenservice via klantenservice@snipbrink-cloud.nl.
+
+Met vriendelijke groet,
+
+Afdeling Facturatie
+Snipbrink Cloud N.V.

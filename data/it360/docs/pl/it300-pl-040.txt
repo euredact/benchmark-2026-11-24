@@ -1,0 +1,25 @@
+ALERT DLP-2026-10-16-0042 – upload pliku z danymi klienta do zewnętrznej usługi transferu plików
+Źródło: Microsoft Purview DLP + proxy Squid · Polityka: „Customer DB dumps” · Ważność: wysoka
+Czas zdarzenia: 16.10.2026 10:14 · Status: zamknięty (16.10.2026 15:20)
+Organizacja: Sikorowo Hosting S.A.
+
+Dopasowanie: plik zgodny z wzorcem zrzutu bazy danych klienta (nagłówek pg_dump, nazwa *_backup.sql.gz), wysłany do zewnętrznej usługi WeTransfer.
+
+Wycinek z logu proxy (access.log, czas lokalny):
+2026-10-16 10:14:02 10.250.191.117 TCP_MISS/200 48211336 POST https://upload.wetransfer.com/api/v4/transfers user=czajkaj HIER_DIRECT/145.64.189.216 application/json file="mpalasz85_backup.sql.gz"
+2026-10-16 10:14:03 10.250.191.117 TCP_MISS/200 1874 POST https://upload.wetransfer.com/api/v4/transfers/finalize user=czajkaj HIER_DIRECT/145.64.189.216 form: recipients=["palasz.milena40@inbox.example"] from="jacek.czajka@sikorowo-hosting.pl" message="Kopia bazy zgodnie ze zgłoszeniem"
+
+Rekord NAC:
+10.250.191.117 | MAC D4-2A-BE-D5-12-DF | VLAN 120 (stacje platformy) | przypisanie: czajkaj | 802.1X OK
+
+Notatka z triage – Teresa Podraza, analityczka ds. nadużyć (podrazat), 16.10.2026
+1. Kto i co: użytkownik czajkaj – Jacek Czajka, inżynier platformy – wysłał ze swojej stacji zrzut bazy danych o rozmiarze ok. 46 MB.
+2. Do kogo i dlaczego: 15.10.2026 klientka hostingu Milena Pałasz (login mpalasz85) poprosiła w zgłoszeniu do supportu o kopię swojej bazy danych. Jacek Czajka wysłał plik na adres e-mail z jej konta klienta przez zewnętrzną usługę, zamiast wygenerować eksport w panelu klienta. Rozmowa z nim 16.10 o 13:30 potwierdziła przebieg; wskazał, że eksport w panelu nie działał dla baz powyżej 40 MB.
+3. Ocena: odbiorcą jest właścicielka danych, która sama o nie wnioskowała; brak ujawnienia osobom trzecim. Plik w usłudze wygasa po 7 dniach, link usunięty 16.10. Nie stwierdzono naruszenia ochrony danych osobowych w rozumieniu art. 33 RODO. Stwierdzono naruszenie procedury wydawania kopii danych (wyłącznie przez panel klienta).
+
+Działania naprawcze (właściciel: lider zespołu platformy, termin 23.10.2026):
+– blokada kategorii „File sharing / transfer” na proxy dla VLAN stacji platformy, z wyjątkami zatwierdzanymi przez bezpieczeństwo;
+– naprawa eksportu w panelu dla baz powyżej 40 MB;
+– przypomnienie procedury eksportu przez panel dla zespołu platformy i supportu.
+
+Zamknięcie: Teresa Podraza – „true positive – naruszenie procedury, brak naruszenia ochrony danych”.

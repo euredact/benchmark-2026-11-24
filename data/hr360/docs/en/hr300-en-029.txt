@@ -1,0 +1,33 @@
+FALBURY CARE LIMITED
+HR RECORDS RETENTION SCHEDULE
+Effective 1 October 2026
+
+1. Purpose and scope
+This schedule sets how long Falbury Care Limited keeps HR and payroll records and who deletes them. It applies to all HR and payroll records, paper and electronic, held at the Gżira head office and in every care home. It follows the storage-limitation principle in GDPR Art. 5(1)(e) and the right to erasure in Art. 17. The summer 2026 internal audit found personnel files and police conduct certificates kept for years beyond any need; from 1 October 2026 every home works to the same timetable below.
+
+2. Retention periods
+
+| Record | Retention | Notes |
+|---|---|---|
+| Recruitment files of unsuccessful candidates | 6 months after the decision | Longer only with the candidate's written consent |
+| Personnel file | Employment + 5 years | Contract records also as required by the Employment and Industrial Relations Act (Cap. 452) |
+| Payroll and FS3 records | 9 years | Income Tax Management Act (Cap. 372) |
+| Health data (sick certificates, fitness-to-work assessments) | Employment + 2 years | Kept in a separate, restricted file, never in the personnel file |
+| Criminal records (police conduct certificates for care roles) | Certificate destroyed after 6 months | Record the check date and result only |
+| Trade-union membership data (for dues deduction) | While the deduction runs + 1 year | Payroll only |
+
+3. Special rules
+Health data and criminal records may be opened only by HR staff with a business need. Copies must not be kept in email, shared drives or home offices. Where a manager needs to know about fitness for work, HR confirms the outcome only.
+
+4. Deletion
+Each home manager runs a quarterly purge in the first week of January, April, July and October, using the checklist on the HR intranet page. Paper is shredded on site; electronic records are deleted from all systems, including local copies. HR logs the date of each purge and the home that carried it out. Records subject to a legal hold (a claim, an inspection or an investigation) are not deleted until HR lifts the hold.
+
+5. Complaints
+Staff may contact the Information and Data Protection Commissioner if they believe their records are kept longer than this schedule allows.
+
+Owner: HR department
+Approved by the board on 24 September 2026
+Next review: October 2027
+Questions: dpo@falbury-care.com.mt
+
+Falbury Care Limited | Head office, Gżira, Malta

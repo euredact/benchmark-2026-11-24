@@ -1,0 +1,38 @@
+Internal penetration test – Doveworth Travel Ltd – Findings F-03 to F-05: weak passwords and what they opened
+
+Tester: Paul Pantalleresco, IT Consultant, Quincehithe Security Labs Ltd
+Sponsor: Caitríona Fanning, Chief Financial Officer
+Remediation lead: Elaine McCaffrey, DevOps Engineer
+Test window: 14–25 September 2026, Dublin office and warehouse (internal network)
+Issued: 28 September 2026 – CONFIDENTIAL
+
+F-03 – Weak domain passwords – HIGH
+212 NTLM hashes were extracted from domain controller 10.79.135.28 using the test account provided. 87 (41%) were cracked within 2 hours on a single GPU with a wordlist of season+year patterns (e.g. "Autumn2026") and company-name variants. Cracked accounts include caitrionaf and yvonned. Passwords are not reproduced in this report; the full list was handed over encrypted to the remediation lead.
+
+F-04 – Cloud secret on internal wiki – CRITICAL
+Using the cracked password of yvonned (Yvonne Deegan, Warehouse Supervisor), the tester logged in to the internal wiki. The page "Booking engine – deploy runbook" (owner elainem) contains a live AWS secret access key:
+  aws_secret_access_key = Oag9EM3NQi5RHTJdZ9UArhMnfwgbPRrTpb/ZMwy/
+The key was validated read-only with sts get-caller-identity; no further use was made of it.
+
+F-05 – Voice-biometric reset service – HIGH
+The service account of the voice-biometric password-reset server 10.158.122.169 uses a dictionary password. With it the tester reached the admin console, which lists enrolled voiceprints and allows them to be exported or re-enrolled. Example: Caitríona Fanning (Chief Financial Officer), voiceprint VP-0388. An attacker could replace this voiceprint with their own and pass the phone password reset as the CFO. No voiceprint was exported or changed during the test.
+
+Evidence
+Screenshots E-03-1 to E-05-4 in the evidence archive. VPN portal 16.250.82.199 was tested with the cracked credentials and is not affected (MFA enforced).
+
+Recommendations
+- F-03: banned-password list, minimum length 14 characters instead of complexity rules, reset all cracked accounts.
+- F-04: rotate the AWS key now, review CloudTrail for its use, move secrets to a vault and scan the wiki for others.
+- F-05: strong unique service-account password, MFA on the admin console, re-enrol the CFO's voiceprint after the fix.
+
+Remediation priority
+| Finding | Rating | Deadline | Owner |
+|---|---|---|---|
+| F-04 | Critical | within 24 hours | Elaine McCaffrey |
+| F-05 | High | within 7 days, incl. re-enrolment of the CFO voiceprint | Elaine McCaffrey |
+| F-03 | High | within 30 days | Elaine McCaffrey |
+
+Re-test proposed for 26 October 2026.
+
+Paul Pantalleresco
+IT Consultant, Quincehithe Security Labs Ltd

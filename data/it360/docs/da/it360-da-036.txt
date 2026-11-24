@@ -1,0 +1,46 @@
+GÅSEHØJ WEBDESIGN
+v/ Stine Fjelstrup, selvstændig sikkerhedskonsulent
+Hyldebærparken 123, 3. tv., 1214 København K
+CVR-nr. 25527690 · momsregistreret · stine@gaasehoejwebdesign.dk
+
+Faktura nr. 2026-031 – oktober 2026
+Fakturadato: 02.11.2026
+Rammeaftale: RA-2026-04 (sikkerhedshærdning af webshop og butiksnetværk)
+
+Kunde
+Flintdal Detail ApS
+Benvedparken 77, 1.
+4800 Nykøbing F
+CVR-nr. 80181256
+Att.: Charlotte Rosager, servicedeskmedarbejder / kreditorbogholderiet
+
+Timeseddel oktober 2026
+| Dato | Dage | Opgave |
+|---|---|---|
+| Tir. 06.10 | 1,0 | WAF-regler for webshoppen: gennemgang af falske positiver, blokering af kendte botnet |
+| Tors. 08.10 | 1,0 | Design af separat POS-VLAN og firewallregler mellem butik og kontor |
+| Tors. 15.10 | 1,0 | På stedet i Nykøbing F: omlægning af kasseterminaler til POS-VLAN, test med butikschefen |
+| Ons. 21.10 | 1,0 | MFA for alle admin-konti i webshop og Microsoft 365, nødadgangskonti oprettet |
+| Tir. 27.10 | 0,5 | Afsluttende rapport og overdragelse til servicedesk |
+| I alt | 4,5 | |
+
+Fakturalinjer
+| Beskrivelse | Antal | Pris | Beløb |
+|---|---|---|---|
+| Konsulentbistand, dagspris | 4,5 dage | 4.500,00 kr. | 20.250,00 kr. |
+| Kørsel København–Nykøbing F t/r 15.10, 255 km efter aftalt sats | 1 | | 637,50 kr. |
+
+Beløb ekskl. moms: 20.887,50 kr.
+Moms 25 %: 5.221,88 kr.
+I alt: 26.109,38 kr.
+
+Betaling til reg.nr. 8114 kontonr. 7034224228 – angiv fakturanummer 2026-031.
+Spørgsmål til fakturaen: sfjelstrup71@mailbox.test
+
+Betalingsbetingelser: netto 8 dage – forfald 10.11.2026
+
+Tak for et godt samarbejde i oktober.
+
+Venlig hilsen
+Stine Fjelstrup
+selvstændig sikkerhedskonsulent, Gåsehøj Webdesign

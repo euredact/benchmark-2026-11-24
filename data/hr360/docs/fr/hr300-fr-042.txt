@@ -1,0 +1,61 @@
+Nauvières Pharma S.A. – Direction des ressources humaines
+2 impasse des Roitelets, L-2799 Luxembourg
+
+Audit badges et feuilles de temps – septembre 2026 – rapport RH
+
+Destinataires : Jessica Waltener, responsable assurance qualité ; direction de site
+Rédaction : Myriam Heuertz, responsable des ressources humaines
+Date : 30 octobre 2026
+Diffusion restreinte – ne pas joindre au dossier d'inspection sans accord RH
+
+1. Contexte
+La préparation de l'audit BPF a fait ressortir, pour le mois de septembre 2026, plusieurs écarts entre les pointages, les accès badge à la réserve des stupéfiants et les journaux d'accès à distance de membres des équipes de fabrication et du laboratoire. Avant la visite de l'inspecteur, les RH ont examiné chaque écart afin de déterminer s'il traduisait un manquement ou une simple faille de procédure. Le présent rapport expose les constats, les conclusions et les actions proposées.
+
+2. Méthode
+Pour chaque écart, nous avons rapproché cinq sources :
+- la pointeuse biométrique de l'atelier, qui conserve un gabarit d'empreinte par salarié ; chaque gabarit porte un identifiant propre, distinct du matricule ;
+- les badges d'accès aux zones contrôlées ;
+- la lecture des plaques du parking du personnel ;
+- les journaux du VPN ;
+- les journaux des postes de travail transmis par le service informatique.
+Les salariés concernés ont été entendus individuellement entre le 12 et le 16 octobre.
+
+3. Constats
+
+Cas 1 – Romain Schlechter, technicien de fabrication (matricule MA-92770)
+Le lundi 14 septembre, la pointeuse enregistre une entrée à 06:02 avec le gabarit d'empreinte FP-T0318. La caméra du parking n'a cependant pas lu ce jour-là la plaque de son véhicule, YH 8154. Entendu le 12 octobre, Romain a expliqué qu'il pratique le covoiturage avec Tom Loschetter (matricule MA-04167). La voiture de ce dernier, immatriculée YQ 2867, a bien été lue à l'entrée à 05:55. Les deux pointages sont cohérents.
+Conclusion : aucune anomalie.
+
+Cas 2 – Tom Loschetter, technicien de fabrication
+Le lundi 21 septembre, alors que Tom Loschetter était en congé, le journal VPN enregistre une session sous l'identifiant toml depuis l'adresse IP 136.94.141.60. Le journal du poste montre qu'il s'agit de son ordinateur portable (n° de série SN-7050-RNTZ, adresse MAC 24:d8:24:0b:31:21), resté allumé à son domicile, qui a lancé la synchronisation automatique des dossiers partagés. Aucune ouverture d'application métier, aucune modification de dossier de lot. Tom Loschetter n'a déclaré aucune heure supplémentaire pour cette journée.
+Conclusion : pas de travail effectué, pas de demande abusive ; faille de configuration.
+
+Cas 3 – Nadine Bour, technicienne de laboratoire (matricule MA-51586)
+Le lundi 28 septembre, son badge a ouvert la réserve des stupéfiants à 07:40 sans pointage préalable. Nadine Bour a reconnu avoir oublié de pointer en arrivant ; sa présence est confirmée par le registre de la réserve et par sa responsable d'équipe. La correction de la feuille de temps a été validée le 13 octobre.
+Conclusion : oubli de pointage, corrigé.
+
+4. Extraits de casier judiciaire
+L'accès à la réserve des stupéfiants et à la réserve d'échantillons médicaux est subordonné à la remise d'un extrait du casier judiciaire (bulletin n° 3).
+- Rui Lemos, technicien de laboratoire (matricule MA-88524), accès à la réserve des stupéfiants : bulletin n° 3 reçu le 9 octobre 2026, aucune inscription.
+- Paulo Guerreiro, visiteur médical (matricule MA-53819), qui demande pour la première fois l'accès à la réserve d'échantillons médicaux afin d'y retirer ses échantillons promotionnels : le bulletin a été demandé ; il n'a pas encore été remis.
+
+5. Conclusions
+Aucun des cas examinés ne relève d'une fraude ou d'une tentative de fraude au temps de travail. Les écarts révèlent en revanche trois faiblesses de procédure :
+a) la synchronisation automatique du VPN reste active pendant les congés et crée des connexions qui ressemblent à du travail à distance ;
+b) le contrôle d'accès aux zones sensibles ne vérifie pas qu'un pointage a eu lieu ;
+c) le recours à la pointeuse biométrique pour le simple enregistrement du temps de travail doit être réexaminé au regard des exigences de la CNPD, la proportionnalité de ce traitement n'ayant pas été réévaluée depuis 2021.
+
+6. Actions
+| Action | Responsable | Échéance |
+| Bloquer la synchronisation VPN automatique les jours de congé | service informatique | 15 novembre 2026 |
+| Rappel écrit des règles de pointage aux équipes fabrication et laboratoire | Jessica Waltener | 6 novembre 2026 |
+| Accès de Paulo Guerreiro à la réserve d'échantillons : en attente de son bulletin n° 3 | RH | à réception |
+| Analyse, avec le DPO, du remplacement de la pointeuse biométrique par le badge pour l'enregistrement du temps (lignes directrices CNPD) | Myriam Heuertz | 30 novembre 2026 |
+
+Les données personnelles exploitées pour cet audit (journaux, lectures de plaques, enregistrements de pointage) seront supprimées des dossiers de travail RH à la clôture des actions ; seul le présent rapport est conservé.
+
+Pour discussion avec Jessica Waltener avant l'inspection du 19 novembre 2026.
+
+Myriam Heuertz
+responsable des ressources humaines
+Nauvières Pharma S.A.

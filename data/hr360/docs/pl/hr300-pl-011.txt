@@ -1,0 +1,48 @@
+Cisino Inżynieria Sp. z o.o. | Portal pracowniczy – wydruk zgłoszenia z kiosku
+Wydruk PDF z dnia 30.09.2026, 08:55
+
+======================================================================
+CZĘŚĆ A – ZGŁOSZENIE DO PROGRAMU MENTORINGOWEGO „DOŚWIADCZENI 60+”
+(formularz imienny)
+======================================================================
+Imię i nazwisko:          Taras Moskalenko
+Nr osobowy:               P036151
+Stanowisko:               spawacz
+Dział:                    Dział Inżynierii
+Przełożony:               Henryk Tamborski, kierownik działu inżynierii
+Data urodzenia:           26.10.1963   (weryfikacja kryterium 60+: spełnione)
+
+Obszar, w którym chcę być mentorem:
+[x] spawanie metodą TIG – wdrażanie młodych spawaczy
+[ ] spawanie MAG
+[ ] odczyt dokumentacji WPS
+Preferowana zmiana: [x] ranna  [ ] popołudniowa
+Uwagi uczestnika: „Mogę prowadzić zajęcia na stanowisku nr 4 w hali 2.”
+
+======================================================================
+CZĘŚĆ B – ANKIETA RÓŻNORODNOŚCI 2026
+Ankieta anonimowa – odpowiedzi nie są łączone z danymi pracownika.
+======================================================================
+Instrukcja: Udział jest dobrowolny, każde pytanie można pominąć. Przełożony nie ma wglądu w odpowiedzi. Wyniki są prezentowane wyłącznie zbiorczo, w grupach liczących co najmniej 10 osób. W sprawach programu mentoringowego koordynator programu kontaktuje się z uczestnikiem osobno.
+
+B1. Obywatelstwo:                      ukraińskie
+B2. Języki używane w pracy:            polski, ukraiński
+B3. Pochodzenie etniczne (opcjonalne): węgierskie – mniejszość węgierska z Zakarpacia
+B4. Orientacja seksualna (opcjonalne): biseksualny
+B5. Niepełnosprawność (opcjonalne):    [pominięto]
+
+----------------------------------------------------------------------
+Metadane zgłoszenia:
+Złożono 2026-09-29 13:42 z urządzenia kiosk-hala2 (MAC f462.7cdf.435d)
+ID rekordu: KSK-2026-0929-0117 | części: A, B (jeden rekord)
+----------------------------------------------------------------------
+
+ADNOTACJA DZIAŁU HR
+Elżbieta Sędziak, HR Business Partner, 30.09.2026:
+„Błąd konfiguracji – część B zapisana z danymi identyfikacyjnymi. Odpowiedzi z części B przeniesiono do puli anonimowej bez identyfikatora; imienny zapis części B zostanie usunięty. Pracodawca nie przetwarza tych danych w formie imiennej (art. 22¹b KP). Zgłoszono do IOD, nr incydentu 2026/09/07.
+Do czasu rozdzielenia obu formularzy przez IT ankieta różnorodności zostaje wyłączona na kioskach w halach. Pracownik zostanie poinformowany o zdarzeniu osobiście – rozmowę przeprowadzę w czwartek 1.10 na zmianie rannej, bez udziału przełożonego.
+Część A przyjmuję – zgłoszenie do programu jest kompletne, kryterium wieku spełnione.”
+
+Status: część A – przyjęto do programu; część B – do usunięcia po przeniesieniu do puli anonimowej (termin: 2.10.2026)
+
+E. Sędziak, HR Business Partner, 30.09.2026

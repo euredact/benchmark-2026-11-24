@@ -1,0 +1,82 @@
+[SD-26-04418] Toegang gedeelde mailbox juridisch@ en archief ex-collega – G. Kwie
+
+Organisatie: Valkkreek Meubelen NV, Antwerpen
+Categorie: M365 > Exchange Online > Machtigingen
+Aanvrager: Gwendolyn Kwie <gwendolyn.k@valkkreekmeubelen.be>, Bedrijfsjurist
+Behandelaar: Kirsten Verachtert <kirsten.v@valkkreekmeubelen.be>, Netwerkbeheerder
+Goedkeuring vereist van: Liesbeth Abts, Security Officer
+Prioriteit: hoog (deadlines in lopende dossiers)
+Status: Opgelost / gesloten
+
+---------------------------------------------------------------
+Woensdag 16-09-2026 08:52 – Gwendolyn Kwie
+Dag Kirsten,
+
+Sinds het vertrek van Bart Raymaekers op 31 augustus ben ik de enige jurist en lopen zijn contractdossiers via mij. Ik heb dringend toegang nodig tot:
+
+1. de gedeelde mailbox juridisch@valkkreekmeubelen.be, waar leveranciers en advocaten naartoe schrijven;
+2. zijn gearchiveerde mailbox, voor drie lopende dossiers met termijnen: de huurovereenkomst van het showroompand (opzegtermijn loopt af op 30 september), de distributieovereenkomst met onze Duitse partner en een geschil met een transporteur.
+
+Mijn login is kwieg. Ik werk op mijn laptop met serienummer PFIBWBN1; het zou fijn zijn als de mailbox daar automatisch in Outlook verschijnt.
+
+Alvast bedankt,
+Gwendolyn
+
+---------------------------------------------------------------
+Woensdag 16-09-2026 09:20 – Kirsten Verachtert
+Hoi Gwendolyn,
+
+De gedeelde mailbox is geen probleem. Voor de archiefmailbox van een vertrokken collega vraagt onze procedure eerst een beoordeling door Security, omdat daar ook privéberichten in kunnen zitten. Ik zet Liesbeth erbij. De mailbox van Bart is na zijn vertrek omgezet naar een inactieve mailbox met litigation hold, dus er is niets verloren gegaan.
+
+---------------------------------------------------------------
+Woensdag 16-09-2026 10:41 – Liesbeth Abts
+Ik heb de mappenstructuur bekeken (alleen mapnamen en aantallen, geen inhoud geopend).
+
+Bevindingen:
+- Mappen "Contracten", "Geschillen" en "Leveranciers" zijn zakelijk en nodig voor de lopende dossiers. Geen bezwaar.
+- Er is een map "Kerkfabriek" met ca. 340 berichten. Uit de mapnaam en de afzenders blijkt dat Bart Raymaekers penningmeester is van de kerkfabriek van zijn parochie en daar vanuit zijn werkadres over correspondeerde, onder meer met de Kerkfabriek Sint-Willibrordus. Dat is privécorrespondentie en bovendien gevoelige informatie. Deze map wordt volledig uitgesloten van de export en van elke toegang.
+- De map "Privé" (12 berichten) wordt eveneens uitgesloten.
+
+HR brengt Bart per brief op de hoogte dat zijn privémappen niet worden ingezien en dat hij ze binnen dertig dagen kan opvragen; daarna worden ze verwijderd. Contactgegevens horen niet in dit ticket.
+
+Onder die voorwaarden: goedgekeurd.
+Liesbeth Abts, Security Officer
+
+---------------------------------------------------------------
+Woensdag 16-09-2026 13:05 – Kirsten Verachtert
+Uitgevoerd:
+
+1. Gedeelde mailbox
+Add-MailboxPermission -Identity juridisch@valkkreekmeubelen.be -User kwieg -AccessRights FullAccess -AutoMapping $true
+Add-RecipientPermission -Identity juridisch@valkkreekmeubelen.be -Trustee kwieg -AccessRights SendAs
+Door AutoMapping verschijnt de mailbox na een herstart van Outlook vanzelf op PFIBWBN1. Ik heb het profiel op afstand gecontroleerd: synchronisatie is gestart.
+
+2. Archief ex-collega
+Geen rechtstreekse toegang tot de inactieve mailbox. In plaats daarvan een gefilterde export via Microsoft Purview (inhoud zoeken):
+- bron: inactieve mailbox, inclusief online archief
+- inbegrepen: mappen Contracten, Geschillen, Leveranciers
+- uitgesloten: mappen Kerkfabriek en Privé (op basis van folderid)
+- resultaat: 2.184 items, geëxporteerd als PST
+
+De export staat in jouw OneDrive:
+https://share.valkkreekmeubelen.be/personal/gwendolyn_k/Documents/Archiefexport-juridisch
+De map is alleen voor jou zichtbaar en wordt na 90 dagen automatisch opgeruimd. Je kunt het PST-bestand in Outlook openen via Bestand > Openen en exporteren > Outlook-gegevensbestand openen. Volgens Microsoft werkt dat het best als je het bestand eerst lokaal downloadt.
+
+Controle: ik heb in het exportrapport nagekeken dat geen enkel item uit de uitgesloten mappen is meegekomen (0 items). Het rapport heb ik aan dit ticket toegevoegd voor het auditspoor.
+
+Kun je bevestigen dat alles werkt?
+
+---------------------------------------------------------------
+Woensdag 16-09-2026 15:47 – Gwendolyn Kwie
+Werkt allemaal. juridisch@ staat in Outlook, en in de export vind ik de huurovereenkomst en de mails met de transporteur terug. Ik kan verder. Bedankt aan jullie allebei!
+
+---------------------------------------------------------------
+Woensdag 16-09-2026 16:02 – Kirsten Verachtert
+Samenvatting voor afsluiting:
+- Full Access en Send As op juridisch@ voor kwieg: gedaan
+- Gefilterde archiefexport in OneDrive: gedaan, privémappen uitgesloten
+- Goedkeuring Security: Liesbeth Abts, 16-09-2026 10:41
+- Brief aan ex-collega over privémappen: HR (buiten dit ticket)
+
+Ticket gesloten.
+Kirsten Verachtert, Netwerkbeheerder

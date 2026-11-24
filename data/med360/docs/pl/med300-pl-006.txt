@@ -1,0 +1,22 @@
+Laboratorium Diagnostyczne Jodłowo Sp. z o.o. · ul. Piekarska 98/50, 15-657 Białystok · Punkt pobrań: Katowice
+SPRAWOZDANIE Z BADAŃ LABORATORYJNYCH                       Nr zlecenia: JK/26/118304
+
+Pacjent: Mykoła Panchenko | ur. 15.09.1948 | M | ID pacjenta: 4790724
+Zleceniodawca: lek. Edyta Kucab, lekarz POZ, PWZ 7538845, Poradnia Rodzinna Sasanek
+Pobrano: 02.11.2026 08:20 | Zatwierdzono: 04.11.2026 13:47
+Informacja kliniczna: dyzuria, wydzielina z cewki, obrzęk prawego kolana; kontakt seksualny z nową partnerką ok. 3 tyg. temu
+
+Badanie | Wynik | Wartości ref.
+Chlamydia trachomatis NAAT (mocz z pierwszej porcji) | DODATNI | ujemny
+Neisseria gonorrhoeae NAAT | ujemny | ujemny
+Trichomonas vaginalis NAAT | ujemny | ujemny
+HIV Ag/Ab combo | niereaktywny | niereaktywny
+Kiła (CLIA, przeciwciała całkowite) | ujemny | ujemny
+HBsAg | ujemny | ujemny
+HLA-B27 (cytometria, potwierdzenie PCR) | obecny | –
+CRP | 38 mg/l | <5
+OB | 46 mm/h | <20
+
+Komentarz: obraz odpowiada chlamydiowemu zapaleniu cewki moczowej. Obecność HLA-B27 w kontekście klinicznym przemawia za reaktywnym zapaleniem stawów. Zakażenie C. trachomatis podlega zgłoszeniu do PSSE – zgłoszenia dokonuje lekarz leczący.
+
+Autoryzował: lek. Bożena Krużel, lekarz specjalista diagnostyki laboratoryjnej, PWZ 9330467, 04.11.2026 13:47

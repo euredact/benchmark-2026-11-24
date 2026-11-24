@@ -1,0 +1,28 @@
+Mutationsmeldung Lohn Dezember 2026 - Noah Schafroth, Referent Zulassung, PN HR-96850
+
+An: Susanne Hinkelmann, Lohnbuchhalterin, Steindorf Lohnbüro GmbH & Co. KG
+Von: Roman Schlunegger, Eichreuth Pharma GmbH
+Datum: 10.11.2026
+
+Mandant: Eichreuth Pharma GmbH, Basel | UID CHE-564.736.141 (Verrechnungsschlüssel)
+
+Bitte ab dem Lohnlauf Dezember 2026 folgende Mutationen erfassen:
+
+1) Lohnkonto
+Neue IBAN ab 01.12.2026: CH76 0849 2724 2585 6082 2
+Das bisherige Konto ist aufgelöst.
+
+2) Gewerkschaftsbeitrag
+Herr Schafroth ist Mitglied der Syna geworden und verlangt den Lohnabzug. Grundlage ist der GAV der Basler Chemie- und Pharmaindustrie zwischen dem Arbeitgeberverband und Syna/Unia.
+Monatslohn brutto: CHF 5'666.67
+Abzug Gewerkschaftsbeitrag Syna: CHF 31.84 pro Monat
+
+3) Zeiterfassung
+Ab 01.12.2026 stellt das Laborterminal auf Fingerabdruck um. Für den Import bitte Template-ID FP-96850-A mit der Personalnummer HR-96850 verknüpfen.
+
+Hinweis: Ihre Gebühr von CHF 15.00 pro Mutation stellen Sie bitte wie üblich der Eichreuth Pharma GmbH in Rechnung.
+
+Bitte bestätigen Sie mir bis 20.11.2026, dass der Dezemberlauf die Änderungen enthält.
+
+Freundliche Grüsse
+Roman Schlunegger, Personalreferent, Eichreuth Pharma GmbH

@@ -1,0 +1,13 @@
+REQ-2026-1840 Wiedereinstieg Ramona Stöver 16.09.2026
+Erstellt: 15.09.2026 09:12 · Bearbeiterin: Svenja Dandl, IT-Technikerin · Priorität: hoch
+Betroffen: Ramona Stöver, kaufmännische Geschäftsführerin, Personalnr. EMP-099886
+
+Auftrag HR: Zugänge zum Wiedereinstieg am Mittwoch, 16.09., nach längerer Abwesenheit reaktivieren.
+
+[x] AD-Konto und Postfach ramonastoever@igelkamp-lebensmittel.de reaktiviert, MFA zurückgesetzt (Neuregistrierung am ersten Tag)
+[x] Diensthandynummer 0160 14070182 wieder auf ihre SIM gelegt
+[x] Neues Notebook vorbereitet, Seriennr. W2K3K6B
+[x] Gruppenkalender: auf Bitte ihrer Assistenz die bei der Postfachbereinigung gelöschten Einträge für ihre jüdischen Feiertage wiederhergestellt – Jom Kippur (Mo, 21.09.) und Sukkot (26.09.–02.10.) als Abwesenheit
+[x] Willkommensinfo mit Erstanmeldung an stoever.ramona@inbox.example gesendet, bis sie sich wieder anmelden kann
+
+Status: Erledigt 15.09. 17:20 – Notebook liegt am Empfang. Erster-Tag-Check am 16.09. um 08:30 mit Svenja Dandl.

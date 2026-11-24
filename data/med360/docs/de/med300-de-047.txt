@@ -1,0 +1,40 @@
+Humangenetik Lindenstett AG · Medizinisches Laboratorium · Zaunkönigstraße 132b · 4090 Basel
+
+LABORBEFUND – STI-Abklärung (Endbefund)
+
+Einsender: Dr. med. Reto Ployer, Walk-in-Praxis (Permanence), Basel
+Kopie auf Wunsch des Patienten an: Dr. med. Antje Fockenbrock, Fachärztin für Allgemeinmedizin, Hausärzte Wacholderingen, Rotdornallee 71, 80355 München (weiterbehandelnd)
+
+Patient: Klaus Gundlach, männlich, geb. 05.02.1960
+Patienten-Nr.: P-916845
+Entnahme: 23.10.2026 · Eingang: 26.10.2026 · Befunddatum: 28.10.2026
+
+Klinische Angaben laut Auftrag
+Schmerzloses Ulcus am Penis, Exanthem palmar. Sexualanamnese: ungeschützter Verkehr mit mehreren Partnerinnen, Kontakt mit einer Sexarbeiterin im September.
+
+Ergebnisse
+Untersuchung | Resultat | Referenz
+Treponema pallidum TPPA | reaktiv | nicht reaktiv
+VDRL (quantitativ) | 1:32 | < 1:1
+Treponema-IgM (Immunoblot) | positiv | negativ
+HIV-1/2 Ag/Ak (4. Generation) | negativ | negativ
+HBsAg | negativ | negativ
+Anti-HBs | 120 IU/l | > 10 IU/l
+HCV-Antikörper | negativ | negativ
+Chlamydia trachomatis NAAT, Urin und Pharynx | negativ | negativ
+Neisseria gonorrhoeae NAAT, Urin und Pharynx | negativ | negativ
+
+Beurteilung
+Serologisch aktive Syphilis, klinisch vereinbar mit Sekundärstadium. Kein Hinweis auf HIV-, HBV- oder HCV-Infektion; Immunität gegen Hepatitis B nach Impfung. Chlamydien und Gonokokken nicht nachgewiesen.
+
+Empfehlung
+Therapie mit Benzathin-Benzylpenicillin 2,4 Mio. IE i.m. einmalig, durch die weiterbehandelnde Hausärztin in München. VDRL-Kontrollen nach 3, 6 und 12 Monaten. Partnerinformation und -untersuchung empfohlen. Wiederholung des HIV-Tests in 6 Wochen (diagnostisches Fenster).
+
+Meldepflicht
+Der positive Syphilisbefund wird vom Labor gemäss Epidemiengesetz (EpG) an das BAG und den Kantonsarzt BS gemeldet. Der Einsender erhält das Formular für die ergänzende klinische Meldung.
+
+Analytik: Esther Jaun, Medizinische Technologin für Laboratoriumsanalytik, GLN 7601000460462
+Medizinische Validation: Dr. med. Severin Gisiger, Facharzt für Laboratoriumsmedizin, GLN 7601000449245
+Validiert am 28.10.2026, 11:47 Uhr
+
+Dieser Befund enthält Gesundheitsdaten und Daten zum Sexualleben (Art. 9 DSGVO / DSG). Weitergabe nur an berechtigte Personen.
